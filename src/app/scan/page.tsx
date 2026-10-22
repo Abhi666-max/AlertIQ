@@ -86,7 +86,12 @@ export default function ScanPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="relative flex min-h-screen flex-col bg-[#08090A] text-white overflow-hidden">
+      {/* Background Ambient Glow */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-indigo-600/10 blur-[140px] animate-float-1" />
+      </div>
+
       <AppNavbar
         onOpenHistory={() => setIsHistoryOpen(true)}
         historyCount={history.length}
@@ -97,14 +102,14 @@ export default function ScanPage() {
           <div className="flex items-center justify-between">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
             >
               <ArrowLeft className="h-3.5 w-3.5" /> Back to Overview
             </Link>
 
             <button
               onClick={() => setIsHistoryOpen(true)}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
             >
               <Clock className="h-3.5 w-3.5" />
               <span>Session Vault ({history.length} saved)</span>
