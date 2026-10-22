@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'AlertIQ — Enterprise Scam Message Detection & Threat Intelligence Platform',
   description:
-    'Identify and dissect sophisticated social engineering, phishing messages, and deceptive links using advanced Groq AI reasoning, verbatim evidence verification, and domain reputation telemetry.',
+    'Identify and dissect sophisticated social engineering, phishing messages, and deceptive links using advanced neural threat reasoning, verbatim evidence verification, and domain reputation telemetry.',
   keywords: [
     'scam detection',
     'phishing intelligence',

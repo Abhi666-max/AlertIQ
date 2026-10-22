@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Navbar } from '@/components/Navbar';
+import { AppNavbar } from '@/components/AppNavbar';
 import { AnalyzerForm } from '@/components/AnalyzerForm';
 import { AnalysisResults } from '@/components/AnalysisResults';
 import { HistoryDrawer } from '@/components/HistoryDrawer';
@@ -87,7 +87,7 @@ export default function ScanPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Navbar
+      <AppNavbar
         onOpenHistory={() => setIsHistoryOpen(true)}
         historyCount={history.length}
       />

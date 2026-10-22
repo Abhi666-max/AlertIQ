@@ -237,8 +237,8 @@ ${result.limitations.map((lim) => `- ${lim}`).join('\n')}
       <div className={`rounded-2xl border ${risk.border} ${risk.bg} p-6 sm:p-8 shadow-sm transition-all`}>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-slate-200/60">
           <div className="flex items-center gap-4">
-            <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border ${risk.badgeBorder} ${risk.badgeBg} shadow-sm`}>
-              <RiskIcon className={`h-8 w-8 ${risk.color}`} />
+            <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${risk.badgeBorder} ${risk.badgeBg} shadow-2xs`}>
+              <RiskIcon className={`h-5 w-5 ${risk.color}`} />
             </div>
             <div>
               <div className="flex items-center gap-2">

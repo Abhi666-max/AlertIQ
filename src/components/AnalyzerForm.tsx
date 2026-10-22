@@ -49,7 +49,7 @@ export function AnalyzerForm({
               Threat Inspection Console
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Paste suspicious SMS text, phishing email headers, or messaging chats for instant Groq AI analysis.
+              Paste suspicious SMS text, phishing email headers, or messaging chats for instant neural threat analysis.
             </p>
           </div>
 
