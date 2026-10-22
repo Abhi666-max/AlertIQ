@@ -1,22 +1,25 @@
 import type { Metadata, Viewport } from 'next';
-import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google';
+import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
-const spaceGrotesk = Space_Grotesk({
-  variable: '--font-space-grotesk',
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: '--font-display',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
 });
 
 const inter = Inter({
   variable: '--font-sans',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono',
   subsets: ['latin'],
+  weight: ['400', '500'],
   display: 'swap',
 });
 
@@ -26,18 +29,17 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'AlertIQ — AI-Powered Scam Message Detection & Threat Alert System',
+  title: 'AlertIQ — Enterprise Scam Message Detection & Threat Intelligence Platform',
   description:
-    'Identify and understand social engineering scam messages, phishing attempts, and deceptive links using AI analysis, verifiable excerpts, and URL reputation heuristics.',
+    'Identify and dissect sophisticated social engineering, phishing messages, and deceptive links using advanced Groq AI reasoning, verbatim evidence verification, and domain reputation telemetry.',
   keywords: [
     'scam detection',
-    'phishing detector',
+    'phishing intelligence',
     'AI cybersecurity',
-    'social engineering',
-    'message risk analyzer',
-    'SMS scam checker',
+    'social engineering defense',
+    'threat analysis platform',
   ],
-  authors: [{ name: 'AlertIQ Cybersecurity Intelligence' }],
+  authors: [{ name: 'AlertIQ Cybersecurity Systems' }],
 };
 
 export default function RootLayout({
@@ -48,10 +50,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} dark antialiased`}
+      className={`${plusJakarta.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body className="min-h-screen bg-[#070a12] text-[#f8fafc] tech-grid selection:bg-cyan-500/20 selection:text-cyan-300">
-        <div className="radar-glow fixed inset-0 pointer-events-none z-0" />
+      <body className="min-h-screen bg-[#f8fafc] text-[#0f172a] luxury-canvas selection:bg-slate-900 selection:text-white">
         <div className="relative z-10 flex min-h-screen flex-col">
           {children}
         </div>

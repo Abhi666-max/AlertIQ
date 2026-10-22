@@ -1,21 +1,21 @@
-# AlertIQ — AI-Powered Scam Message Detection and Risk Alert System
+# AlertIQ — Enterprise Scam Message Detection & Threat Intelligence Platform
 
-> **"Understand suspicious messages before you trust them."**  
-> An academic AI cybersecurity application built as a production-quality, privacy-first web platform.
+> **"Decipher deceptive messages before you trust them."**  
+> An autonomous, privacy-first cybersecurity platform powered by Groq ultra-fast Llama 3.3 70B inference, deterministic heuristic filters, and threat intelligence.
 
 ---
 
-## 1. Overview & Problem Statement
+## 1. Executive Summary
 
-People regularly receive suspicious SMS, emails, and chat messages containing fake lotteries, urgent bank warnings, courier delivery fees, impersonation attempts, and phishing links. Distinguishing genuine messages from sophisticated social engineering attacks is increasingly challenging.
+Digital communications are flooded with urgent account restrictions, fake delivery notices, advance-fee prizes, and sophisticated impersonation attempts. **AlertIQ** delivers an autonomous, verifiable decision-support system to analyze incoming SMS, emails, and chat communications in real time.
 
-**AlertIQ** provides an accessible, transparent decision-support system that evaluates suspicious text in real time. It delivers:
-- **Calibrated Risk Classification**: `HIGH RISK`, `MEDIUM RISK`, `LOW APPARENT RISK`, or `INCONCLUSIVE`.
-- **Observable Threat Indicators**: Verbatim excerpts grounded in the input message paired with plain-English threat explanations.
-- **Visual Specimen Highlighter**: Highlighting exact malicious phrases directly on the submitted message text.
-- **Embedded URL & Domain Safety Review**: Safe RFC 3986 URL extraction with domain heuristic analysis and Google Safe Browsing v4 lookup.
-- **Actionable Defense Checklist**: Immediate safety precautions to prevent credential theft and financial loss.
-- **Complete Privacy Safeguards**: Zero permanent server-side retention; volatile in-memory processing only.
+### Core Capabilities:
+- **Calibrated Risk Classification**: Instant classification into `HIGH RISK`, `MEDIUM RISK`, `LOW APPARENT RISK`, or `INCONCLUSIVE`.
+- **Observable Threat Indicators**: Exact verbatim excerpts quoted from the message, matched with plain-English threat explanations.
+- **Specimen Threat Highlighter**: Visually renders the inspected message with highlighted indicators showing the exact traps.
+- **Embedded URL & Domain Safety Review**: SSRF-proof RFC 3986 URL extraction with heuristic domain checks (brand spoofing, punycode, shorteners, high-risk TLDs) and Google Safe Browsing integration.
+- **Actionable Safety Actions**: Practical precautions to safeguard authentication credentials, OTPs, and financial assets.
+- **Zero Server Data Retention**: Completely ephemeral, volatile in-memory processing. Past results are saved strictly in the user's browser `localStorage`.
 
 ---
 
@@ -24,12 +24,12 @@ People regularly receive suspicious SMS, emails, and chat messages containing fa
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        AlertIQ Next.js Frontend                        │
-│  - Landing Page (Value Proposition, Live Presets, Tech Radar)         │
-│  - Analyzer Interface (Char Counter, Channel Filter, Preset Gallery)   │
-│  - Analysis Suite (Risk Banner, Visual Highlighter, Indicator Cards)   │
-│  - Domain Safety & Threat Intelligence Panel                           │
-│  - Session History Drawer (Local Storage with 1-Click Purge)           │
-│  - Live Faculty Benchmark Dashboard (Metrics, Confusion Matrix)        │
+│  - Luxury Light UI (Plus Jakarta Sans, Inter, Elevated Ceramic Cards)  │
+│  - Threat Inspection Console (Real-time Character Counter, Presets)    │
+│  - Visual Specimen Highlighter & Threat Signal Cards                   │
+│  - URL & Domain Intelligence Review Panel                              │
+│  - Session Vault Drawer (Client-side localStorage with 1-click purge)  │
+│  - Live Empirical Benchmark Dashboard (Confusion Matrix, Precision)   │
 └───────────────────────────────────┬────────────────────────────────────┘
                                     │ POST /api/analyze
                                     ▼
@@ -37,13 +37,14 @@ People regularly receive suspicious SMS, emails, and chat messages containing fa
 │                     Next.js Edge/Node API Backend                      │
 │  1. In-Memory Rate Limiting (Sliding Window, 30 req/min/IP)            │
 │  2. Input Sanitization & Zod Validation (5 - 4000 chars)              │
-│  3. Safe URL Extraction (SSRF-proof, no server-side fetching)          │
-│  4. Threat Intel Lookup (Google Safe Browsing v4 + Domain Heuristics)  │
-│  5. AI Reasoning Engine:                                               │
-│     * Google Gemini 2.5 Flash with strict untrusted boundary tokens   │
-│     * Fallback Heuristic Rule Engine (Honest unconfigured state)       │
+│  3. Safe URL Extraction (SSRF-proof, no arbitrary server fetches)      │
+│  4. Threat Intel Lookup (Domain Heuristics + Safe Browsing API)        │
+│  5. Groq Llama 3.3 70B Inference Engine:                               │
+│     * Strict untrusted boundary tokens (<<<UNTRUSTED_MESSAGE>>>)      │
+│     * High-speed structured JSON response                             │
+│     * Graceful fallback to deterministic heuristic rules               │
 │  6. Evidence Verification Engine (100% Verbatim Grounding Guard)       │
-│  7. Merged Threat Scoring & Classification Normalization               │
+│  7. Threat Severity Calculation & Response Assembly                    │
 │  8. Response Dispatch (Zero server retention of message content)       │
 └────────────────────────────────────────────────────────────────────────┘
 ```
@@ -53,31 +54,31 @@ People regularly receive suspicious SMS, emails, and chat messages containing fa
 ## 3. Technology Stack
 
 - **Framework**: Next.js 16 (App Router with Turbopack)
-- **UI Library**: React 19 (Server & Client Components)
-- **Styling**: Tailwind CSS v4 with custom cybersecurity dark palette & design tokens
-- **Typography**: Space Grotesk, Inter, JetBrains Mono
+- **UI Architecture**: React 19 (Server & Client Components)
+- **Styling**: Tailwind CSS v4 with bespoke luxury light palette & ceramic card elevation
+- **Typography**: Plus Jakarta Sans (Display), Inter (Body), JetBrains Mono (Telemetry)
 - **Icons**: Lucide React
-- **Validation**: Zod (Strict schema runtime verification)
-- **AI Integration**: Google Gen AI SDK (`@google/genai`) with Gemini 2.5 Flash
-- **Threat Intel**: Google Safe Browsing Lookup API v4 & Domain Heuristic Scanner
-- **Testing**: Vitest with unit test suites & automated evaluation benchmark runner
+- **Validation**: Zod (Strict runtime schema validation)
+- **AI Engine**: Groq Cloud SDK (`groq-sdk`) with `llama-3.3-70b-versatile`
+- **Domain Intelligence**: Google Safe Browsing Lookup v4 & Heuristic Reputation Scanner
+- **Testing**: Vitest with unit test suites & automated empirical benchmark runner
 
 ---
 
 ## 4. Key Security & Privacy Safeguards
 
 1. **Prompt Injection & Adversarial Jailbreak Defense**:
-   All user-submitted content is strictly isolated within untrusted boundary tokens (`<<<UNTRUSTED_MESSAGE>>>`). The AI model is instructed to treat text strictly as specimen data to analyze, never as instructions to execute.
+   All user-submitted content is strictly quarantined within boundary tokens (`<<<UNTRUSTED_MESSAGE>>>`). The AI model treats text strictly as specimen data to inspect, never as operational directives.
 2. **Anti-Hallucination Evidence Verifier**:
-   Every evidence excerpt returned by the model is verified against the original input. Any hallucinated or fabricated quote is stripped or corrected before reaching the user.
+   Every evidence excerpt returned by the model is mathematically validated against the original input. Hallucinated or synthesized quotes are stripped before reaching the user.
 3. **SSRF Immunity (Server-Side Request Forgery)**:
-   The backend never fetches, follows redirects, or executes links extracted from submitted messages. URLs are parsed mathematically and checked against reputation API endpoints.
-4. **Zero Server Retention**:
-   Messages are processed in volatile memory only. No submitted messages are written to databases, logs, or disk. Session history is stored exclusively in client-side browser `localStorage`.
+   The backend never navigates to, fetches, or follows redirects from extracted URLs. Domains are parsed mathematically and inspected via reputation endpoints.
+4. **Data Sovereignty & Zero Server Retention**:
+   Messages are evaluated ephemerally in volatile memory. No submitted text is written to server databases, disk, or logs. Session history is stored exclusively in client-side browser `localStorage`.
 
 ---
 
-## 5. Measured Evaluation & Benchmark Metrics
+## 5. Measured Benchmark & Model Telemetry
 
 AlertIQ was evaluated against a held-out labeled dataset of 20 realistic phishing, social engineering, advance-fee scams, and legitimate communication specimens:
 
@@ -92,11 +93,9 @@ AlertIQ was evaluated against a held-out labeled dataset of 20 realistic phishin
 | **False Positives (FP)** | **0** | No benign messages misclassified as scams |
 | **False Negatives (FN)** | **0** | No scams misclassified as benign |
 
-*You can inspect and re-run this evaluation anytime through the **Faculty Benchmark** tab in the live application.*
-
 ---
 
-## 6. Quick Start & Local Setup
+## 6. Local Setup & Production Run
 
 ### Prerequisites
 - Node.js v20+ or v24+
@@ -104,62 +103,41 @@ AlertIQ was evaluated against a held-out labeled dataset of 20 realistic phishin
 
 ### Installation
 ```bash
-# 1. Clone repository and navigate to directory
+# 1. Clone repository
+git clone https://github.com/Abhi666-max/AlertIQ.git
 cd AlertIQ
 
 # 2. Install dependencies
-npm install
+npm install --legacy-peer-deps
 
 # 3. Configure environment variables
 cp .env.example .env.local
 ```
 
-### Environment Variables (`.env.local`)
+### Environment Configuration (`.env.local`)
 ```env
-# Optional: Google Gemini API Key (get from https://aistudio.google.com/)
-GEMINI_API_KEY=your_gemini_api_key
+# Groq API Key (https://console.groq.com/keys)
+GROQ_API_KEY=your_groq_api_key
 
-# Optional: Preferred model (default: gemini-2.5-flash)
-GEMINI_MODEL=gemini-2.5-flash
-
-# Optional: Google Safe Browsing Lookup v4 Key
-GOOGLE_SAFE_BROWSING_API_KEY=your_key
+# Groq Model Identifier (Default: llama-3.3-70b-versatile)
+GROQ_MODEL=llama-3.3-70b-versatile
 ```
 
-> **Note on Demo Mode**: If no API keys are provided, AlertIQ runs in an honest, transparent **Simulated Rule-Based Engine (Demo Mode)**. It will never fabricate real AI results or pretend an unconfigured API key was used.
-
-### Run Development Server
+### Run Commands
 ```bash
+# Start local development server
 npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Run Automated Tests
-```bash
-# Run Vitest test suites (URL safety, evidence verifier, heuristics, evaluation benchmark)
+# Run Vitest automated test suite
 npm test
-```
 
-### Build Production Bundle
-```bash
+# Build and execute production bundle
 npm run build
 npm start
 ```
 
 ---
 
-## 7. Faculty Demonstration Guide
+## 7. License & Disclaimers
 
-For an academic project evaluation or live demonstration:
-
-1. **Test Bank Phishing**: Click the **"Bank Phishing"** quick preset or paste a Chase suspension SMS. Note the `HIGH RISK` banner, verbatim evidence highlighting, and domain impersonation warning.
-2. **Test 2FA OTP Code**: Click the **"Authentic 2FA (Safe)"** preset. Notice how AlertIQ identifies the authentic notice and explains why it has `LOW APPARENT RISK`.
-3. **Inspect the Faculty Benchmark Tab**: Navigate to **"Faculty Benchmark"** in the top navigation bar to showcase the live Confusion Matrix, precision, recall, and itemized test suite.
-4. **Test Browser Session History**: Open the **"History"** drawer to demonstrate local session tracking and the 1-click **"Purge Session History"** privacy feature.
-5. **Download Analysis Report**: Click **"Download Report (.md)"** to show the generated Markdown report.
-
----
-
-## 8. License & Disclaimers
-
-AlertIQ is developed for academic evaluation as a decision-support cybersecurity tool. It does not guarantee the safety of unflagged messages. Users should always exercise personal caution and verify critical transactions directly with verified institutions.
+AlertIQ is developed as a decision-support cybersecurity platform. While it provides high-precision risk signals, users should always exercise personal vigilance and verify sensitive transactions directly with official institutions.
