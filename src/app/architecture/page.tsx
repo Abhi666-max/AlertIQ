@@ -7,10 +7,11 @@ import { Footer } from '@/components/Footer';
 
 export default function ArchitecturePage() {
   return (
-    <div className="relative flex min-h-screen flex-col bg-[#08090A] text-white overflow-hidden">
-      {/* Background Ambient Glow */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-indigo-600/10 blur-[140px] animate-float-1" />
+    <div className="relative flex min-h-screen flex-col text-white overflow-hidden" style={{ background: '#020408' }}>
+      <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
+        <div className="absolute -top-48 right-1/4 h-[600px] w-[700px] rounded-full blur-[130px] aurora-orb-2" style={{ background: 'radial-gradient(ellipse, rgba(8,145,178,0.14) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-20 left-1/4 h-[500px] w-[600px] rounded-full blur-[120px] aurora-orb-1" style={{ background: 'radial-gradient(ellipse, rgba(124,58,237,0.12) 0%, transparent 70%)' }} />
+        <div className="absolute inset-0 mesh-grid opacity-30" />
       </div>
 
       <AppNavbar />
