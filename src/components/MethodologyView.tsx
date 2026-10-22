@@ -27,7 +27,7 @@ export function MethodologyView() {
           1. Multi-Stage Hybrid Threat Pipeline
         </h2>
         <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-          AlertIQ couples ultra-fast Groq Llama 3.3 70B language models with deterministic heuristic filters and domain threat intelligence:
+          AlertIQ couples high-performance neural language reasoning with deterministic heuristic filters and domain threat intelligence:
         </p>
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -39,9 +39,9 @@ export function MethodologyView() {
           </div>
 
           <div className="rounded-xl border border-slate-200 bg-slate-50/80 p-4 space-y-2">
-            <span className="font-mono text-xs font-bold text-blue-600 uppercase">Stage B: High-Speed Groq Inference</span>
+            <span className="font-mono text-xs font-bold text-blue-600 uppercase">Stage B: Neural Cognitive Reasoning</span>
             <p className="text-xs text-slate-600">
-              The message is isolated inside untrusted boundary markers (<code>&lt;&lt;&lt;UNTRUSTED_MESSAGE&gt;&gt;&gt;</code>) to neutralize prompt injection. Groq&apos;s Llama 3.3 70B evaluates deceptive cognitive lures and outputs validated JSON.
+              The message is isolated inside untrusted boundary markers (<code>&lt;&lt;&lt;UNTRUSTED_MESSAGE&gt;&gt;&gt;</code>) to neutralize prompt injection. AlertIQ&apos;s neural reasoning cluster evaluates deceptive cognitive lures and outputs validated JSON.
             </p>
           </div>
 
@@ -94,7 +94,7 @@ export function MethodologyView() {
           <div className="flex items-start gap-2.5">
             <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-600 mt-1" />
             <p>
-              <strong className="text-slate-900">Encrypted Transmission:</strong> Data is transmitted using TLS 1.3 to Groq Cloud solely for the duration of inference.
+              <strong className="text-slate-900">Encrypted Transmission:</strong> Data is transmitted using TLS 1.3 to the secure neural inference cloud solely for the immediate duration of threat analysis.
             </p>
           </div>
 

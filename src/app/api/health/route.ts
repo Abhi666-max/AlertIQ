@@ -12,8 +12,8 @@ export async function GET() {
       version: '1.0.0',
       timestamp: new Date().toISOString(),
       config: {
-        aiProvider: hasGroqKey ? 'Groq Cloud Engine' : 'Heuristic Rules Engine',
-        model: hasGroqKey ? configuredModel : 'AlertIQ Heuristic Parser',
+        aiProvider: hasGroqKey ? 'AlertIQ Neural Defense Network' : 'AlertIQ Heuristic Rules Engine',
+        model: hasGroqKey ? 'Neural Engine (Enterprise v3.3)' : 'AlertIQ Heuristic Parser',
         hasGroqKey,
         hasSafeBrowsingKey,
         safeBrowsing: hasSafeBrowsingKey ? 'Google Safe Browsing Active' : 'Heuristic Domain Engine Active',

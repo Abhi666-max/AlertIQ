@@ -23,9 +23,9 @@ export function Hero({ onSelectSample, onScrollToAnalyzer }: HeroProps) {
         {/* Subtle pill tag */}
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1 text-xs font-semibold text-slate-700 shadow-sm mb-6">
           <Zap className="h-3.5 w-3.5 text-blue-600" />
-          <span>Groq Ultra-Fast AI Threat Intelligence</span>
+          <span>Neural Cognitive Threat Intelligence</span>
           <span className="text-slate-300">•</span>
-          <span className="text-slate-500 font-normal">Llama 3.3 70B</span>
+          <span className="text-slate-500 font-normal">Sub-Second Interception</span>
         </div>
 
         {/* Primary headline */}

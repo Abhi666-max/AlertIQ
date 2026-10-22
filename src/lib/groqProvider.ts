@@ -86,22 +86,22 @@ export async function analyzeMessageWithGroq(
     return {
       output: validated,
       mode: 'real_llm',
-      modelName: `Groq (${configuredModel})`,
+      modelName: 'AlertIQ Neural Threat Engine (Enterprise)',
       latencyMs: Date.now() - startTime,
     };
   } catch (error: unknown) {
-    console.error('Groq API call error:', error);
+    console.error('Inference error:', error);
     const heuristicFallback = analyzeWithHeuristics(message);
-    const errDetails = error instanceof Error ? error.message : 'Groq inference failure';
+    const errDetails = error instanceof Error ? error.message : 'Neural engine unavailable';
 
     heuristicFallback.limitations.push(
-      `Primary Groq model (${configuredModel}) encountered an issue (${errDetails}). Evaluated via fallback heuristic security rules.`
+      `Primary neural analyzer transitioned to deterministic heuristic engine (${errDetails}).`
     );
 
     return {
       output: heuristicFallback,
       mode: 'simulated_rules',
-      modelName: `Groq Fallback: ${errDetails.slice(0, 60)}`,
+      modelName: 'AlertIQ Behavioral Threat Scanner (Heuristic Mode)',
       latencyMs: Date.now() - startTime,
     };
   }

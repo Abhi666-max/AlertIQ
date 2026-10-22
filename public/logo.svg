@@ -1,0 +1,50 @@
+<svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="shieldGrad" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Border Glow Gradient -->
+    <linearGradient id="borderGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="35%" stop-color="#6366f1" />
+      <stop offset="70%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+
+    <!-- Core Emblem Gradient -->
+    <linearGradient id="coreGrad" x1="30" y1="20" x2="70" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Outer Rounded Hex/Shield Base -->
+  <path d="M50 8L84 22V50C84 70.8 69.5 87.8 50 94C30.5 87.8 16 70.8 16 50V22L50 8Z" fill="url(#shieldGrad)" />
+  <path d="M50 8L84 22V50C84 70.8 69.5 87.8 50 94C30.5 87.8 16 70.8 16 50V22L50 8Z" stroke="url(#borderGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Inner Tech Radar Geometric Facets -->
+  <path d="M50 20L72 30V48C72 63 62 76 50 81C38 76 28 63 28 48V30L50 20Z" fill="#0f172a" fill-opacity="0.8" stroke="url(#borderGrad)" stroke-width="1.2" stroke-dasharray="3 2" />
+
+  <!-- Central Intelligence Pulse Iris -->
+  <circle cx="50" cy="48" r="14" fill="#0369a1" fill-opacity="0.25" />
+  <circle cx="50" cy="48" r="9" fill="url(#coreGrad)" filter="url(#glow)" />
+  
+  <!-- Neural Circuit Crosshairs -->
+  <line x1="50" y1="28" x2="50" y2="40" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+  <line x1="50" y1="56" x2="50" y2="68" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+  <line x1="30" y1="48" x2="42" y2="48" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+  <line x1="58" y1="48" x2="70" y2="48" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Core Spark Dot -->
+  <circle cx="50" cy="48" r="3.5" fill="#ffffff" />
+</svg>

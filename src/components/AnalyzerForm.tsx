@@ -209,7 +209,7 @@ export function AnalyzerForm({
               {isLoading ? (
                 <>
                   <RefreshCw className="h-4 w-4 animate-spin text-white" />
-                  <span>Evaluating with Groq...</span>
+                  <span>Evaluating Threat Specimen...</span>
                 </>
               ) : (
                 <>
