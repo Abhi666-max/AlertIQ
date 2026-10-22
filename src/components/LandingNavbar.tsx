@@ -39,7 +39,7 @@ export function LandingNavbar() {
 
           <Link
             href="/scan"
-            className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-slate-800 transition-all active:scale-[0.98]"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#0071E3] px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-sm shadow-blue-500/20 hover:bg-blue-600 transition-all active:scale-[0.98]"
           >
             <span>Launch Scanner</span>
             <ArrowRight className="h-3.5 w-3.5" />

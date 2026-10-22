@@ -2,35 +2,35 @@
 
 @layer base {
   :root {
-    --bg-page: #f8fafc;
+    --bg-page: #f5f5f7;
     --bg-surface: #ffffff;
-    --bg-subtle: #f1f5f9;
-    --bg-muted: #e2e8f0;
+    --bg-subtle: #eeeff2;
+    --bg-muted: #e5e5ea;
 
-    --border-subtle: #e2e8f0;
-    --border-strong: #cbd5e1;
-    --border-focus: #1e293b;
+    --border-subtle: #e5e5ea;
+    --border-strong: #d1d1d6;
+    --border-focus: #1d1d1f;
 
-    --text-primary: #0f172a;
-    --text-secondary: #334155;
-    --text-muted: #64748b;
-    --text-subtle: #94a3b8;
+    --text-primary: #1d1d1f;
+    --text-secondary: #424245;
+    --text-muted: #6e6e73;
+    --text-subtle: #86868b;
 
-    --accent-blue: #2563eb;
-    --accent-indigo: #4f46e5;
-    --accent-cyan: #0284c7;
+    --accent-blue: #0071e3;
+    --accent-indigo: #5856d6;
+    --accent-cyan: #32ade6;
 
-    --risk-high-text: #991b1b;
+    --risk-high-text: #b91c1c;
     --risk-high-bg: #fef2f2;
     --risk-high-border: #fecaca;
 
-    --risk-medium-text: #92400e;
+    --risk-medium-text: #b45309;
     --risk-medium-bg: #fffbeb;
     --risk-medium-border: #fde68a;
 
-    --risk-low-text: #065f46;
-    --risk-low-bg: #ecfdf5;
-    --risk-low-border: #a7f3d0;
+    --risk-low-text: #15803d;
+    --risk-low-bg: #f0fdf4;
+    --risk-low-border: #bbf7d0;
   }
 
   body {
@@ -44,36 +44,67 @@
   }
 }
 
-/* Subtle luxury iridescent mesh ambient glow */
+/* Dynamic Ambient Glow & Floating Lighting */
 .ambient-glow {
   background: 
-    radial-gradient(1000px circle at 50% -10%, rgba(37, 99, 235, 0.08), transparent 70%),
-    radial-gradient(800px circle at 85% 20%, rgba(99, 102, 241, 0.06), transparent 60%),
-    radial-gradient(700px circle at 15% 30%, rgba(14, 165, 233, 0.06), transparent 50%);
+    radial-gradient(1100px circle at 50% -5%, rgba(0, 113, 227, 0.08), transparent 60%),
+    radial-gradient(800px circle at 85% 15%, rgba(88, 86, 214, 0.07), transparent 50%),
+    radial-gradient(900px circle at 15% 25%, rgba(50, 173, 230, 0.07), transparent 50%);
 }
 
-/* Sophisticated micro dot canvas */
+/* Floating animated background aura */
+@keyframes floatOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -25px) scale(1.08); }
+}
+
+@keyframes floatOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-35px, 20px) scale(1.06); }
+}
+
+.animate-float-1 {
+  animation: floatOrb1 14s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: floatOrb2 18s ease-in-out infinite;
+}
+
+/* Scanner beam radar animation for specimen inspector */
+@keyframes scanlineSweep {
+  0% { transform: translateY(-100%); opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { transform: translateY(1000%); opacity: 0; }
+}
+
+.animate-scanline {
+  animation: scanlineSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Subtle micro dot canvas on studio off-white */
 .dot-canvas {
-  background-image: radial-gradient(rgba(148, 163, 184, 0.28) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(rgba(110, 110, 115, 0.25) 1.2px, transparent 1.2px);
+  background-size: 26px 26px;
 }
 
-/* Elevated glass-like luxury cards */
+/* Elevated Apple-grade squircle cards with soft luminous elevation */
 .lux-card {
   background: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  border: 1px solid rgba(229, 229, 234, 0.95);
   box-shadow: 
-    0 1px 2px rgba(15, 23, 42, 0.02),
-    0 8px 24px -4px rgba(15, 23, 42, 0.05);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    0 1px 3px rgba(0, 0, 0, 0.02),
+    0 10px 28px -6px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .lux-card:hover {
-  border-color: rgba(203, 213, 225, 1);
+  border-color: rgba(209, 209, 214, 1);
   box-shadow: 
-    0 4px 6px -1px rgba(15, 23, 42, 0.03),
-    0 20px 32px -8px rgba(15, 23, 42, 0.08);
-  transform: translateY(-2px);
+    0 4px 12px rgba(0, 113, 227, 0.06),
+    0 24px 44px -8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
 }
 
 /* Shimmer shine effect */

@@ -43,15 +43,13 @@ export function AnalyzerForm({
     <div id="analyzer-section" className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pb-12">
       <div className="luxury-card rounded-2xl p-6 sm:p-8 bg-white border border-slate-200/90 shadow-xl">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
-          <div>
             <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-xl sm:text-2xl font-bold text-slate-900 flex items-center gap-2">
-              <ShieldAlert className="h-5 w-5 text-blue-600" />
-              Threat Inspection Console
+              <ShieldAlert className="h-5 w-5 text-[#0071E3]" />
+              Check Any Suspicious Message
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Paste suspicious SMS text, phishing email headers, or messaging chats for instant neural threat analysis.
+              Paste any SMS text, email, or chat message to check if it&apos;s safe or a scam.
             </p>
-          </div>
 
           {/* Channel selector segmented control */}
           <div className="flex items-center gap-1 rounded-xl border border-slate-200 bg-slate-100 p-1 text-xs">
@@ -139,11 +137,11 @@ export function AnalyzerForm({
           )}
 
           {/* Specimen Presets Gallery */}
-          <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50/70 p-4">
+          <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
             <div className="flex flex-wrap items-center justify-between gap-2 pb-2">
               <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                <Sparkles className="h-3.5 w-3.5 text-blue-600" />
-                <span>Reference Attack Patterns:</span>
+                <Sparkles className="h-3.5 w-3.5 text-[#0071E3]" />
+                <span>Try Real-World Examples:</span>
               </span>
 
               <div className="flex items-center gap-1 text-[11px]">
@@ -198,23 +196,23 @@ export function AnalyzerForm({
           {/* Action Row */}
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-[11px] text-slate-500 text-center sm:text-left">
-              🔒 <strong className="text-slate-700">Confidential Processing:</strong> Messages are evaluated ephemerally in-memory and never persisted on disk.
+              🔒 <strong className="text-slate-700">100% Private:</strong> Checked in memory and deleted immediately. Nothing saved.
             </p>
 
             <button
               type="submit"
               disabled={isLoading || charCount < 5 || charCount > maxChars}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-slate-900/10 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#0071E3] px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/20 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-[0.98]"
             >
               {isLoading ? (
                 <>
                   <RefreshCw className="h-4 w-4 animate-spin text-white" />
-                  <span>Evaluating Threat Specimen...</span>
+                  <span>Checking Message Safety...</span>
                 </>
               ) : (
                 <>
-                  <Zap className="h-4 w-4 text-amber-400" />
-                  <span>Analyze Message Risk</span>
+                  <Zap className="h-4 w-4 text-amber-300" />
+                  <span>Check Message Safety</span>
                 </>
               )}
             </button>

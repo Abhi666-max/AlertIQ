@@ -256,7 +256,7 @@ ${result.limitations.map((lim) => `- ${lim}`).join('\n')}
 
           {/* Risk Severity Index */}
           <div className="flex flex-col items-end text-right w-full sm:w-auto">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold">Calibrated Threat Index</span>
+            <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold">Scam Risk Score</span>
             <div className="flex items-baseline gap-1 mt-0.5">
               <span className={`font-['Plus_Jakarta_Sans',sans-serif] text-4xl font-extrabold ${risk.color}`}>
                 {result.riskScore}
@@ -276,13 +276,13 @@ ${result.limitations.map((lim) => `- ${lim}`).join('\n')}
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600">
           <div className="flex items-center gap-2 font-mono text-[11px]">
             <Zap className="h-3.5 w-3.5 text-amber-500" />
-            <span>Engine: <strong className="text-slate-800">{result.providerDetails.model}</strong></span>
+            <span>Smart Security Engine Active</span>
           </div>
 
           <div className="flex items-center gap-4 text-[11px] font-mono text-slate-500">
-            <span>Latency: {result.providerDetails.latencyMs}ms</span>
+            <span>Checked in: {result.providerDetails.latencyMs}ms</span>
             <span className="flex items-center gap-1 text-emerald-700 font-semibold">
-              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" /> Grounded Evidence Verified
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" /> Verified Evidence Match
             </span>
           </div>
         </div>
@@ -291,8 +291,8 @@ ${result.limitations.map((lim) => `- ${lim}`).join('\n')}
       {/* 2. Executive Assessment */}
       <div className="mt-6 luxury-card rounded-2xl p-6 sm:p-7 bg-white">
         <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold flex items-center gap-2">
-          <Info className="h-4 w-4 text-blue-600" />
-          Executive Intelligence Summary
+          <Info className="h-4 w-4 text-[#0071E3]" />
+          Why This Message Was Flagged
         </h3>
         <p className="mt-3 text-sm sm:text-base text-slate-800 leading-relaxed font-normal">
           {result.summary}
@@ -303,10 +303,10 @@ ${result.limitations.map((lim) => `- ${lim}`).join('\n')}
       <div className="mt-6 luxury-card rounded-2xl p-6 bg-white">
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold">
-            Inspected Specimen (Flagged Threat Markers)
+            Highlighted Words &amp; Links in Your Message
           </h3>
           <span className="text-[11px] font-semibold text-slate-500">
-            {result.indicators.length} observable threat {result.indicators.length === 1 ? 'phrase' : 'phrases'}
+            {result.indicators.length} scam {result.indicators.length === 1 ? 'trick' : 'tricks'} found
           </span>
         </div>
         <div className="mt-4 rounded-xl bg-slate-50/80 p-4 border border-slate-200">
@@ -317,7 +317,7 @@ ${result.limitations.map((lim) => `- ${lim}`).join('\n')}
       {/* 4. Observable Threat Indicators */}
       <div className="mt-6 luxury-card rounded-2xl p-6 bg-white">
         <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold pb-3 border-b border-slate-100">
-          Observable Social Engineering Indicators ({result.indicators.length})
+          Scammer Tricks Detected ({result.indicators.length})
         </h3>
 
         {result.indicators.length === 0 ? (
@@ -428,12 +428,12 @@ ${result.limitations.map((lim) => `- ${lim}`).join('\n')}
       {/* 6. Practical Defensive Recommendations */}
       <div className="mt-6 luxury-card rounded-2xl p-6 bg-white">
         <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold pb-3 border-b border-slate-100">
-          Recommended Safety Actions
+          What You Should Do Right Now
         </h3>
         <ul className="mt-4 space-y-2.5">
           {result.recommended_actions.map((act, idx) => (
             <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
-              <CheckCircle2 className="h-4 w-4 shrink-0 text-blue-600 mt-0.5" />
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-[#0071E3] mt-0.5" />
               <span>{act}</span>
             </li>
           ))}
@@ -444,10 +444,10 @@ ${result.limitations.map((lim) => `- ${lim}`).join('\n')}
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
         <button
           onClick={onReset}
-          className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 shadow-xs transition-all"
+          className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 shadow-xs transition-all active:scale-[0.98]"
         >
           <RotateCcw className="h-3.5 w-3.5 text-slate-500" />
-          <span>Analyze Another Message</span>
+          <span>Check Another Message</span>
         </button>
 
         <div className="flex items-center gap-3">
