@@ -74,7 +74,7 @@ export default function ScanPage() {
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col text-slate-900 overflow-hidden">
+    <div className="relative flex min-h-screen flex-col text-slate-900 bg-[#EEF2F6] overflow-hidden">
 
       {/* CSS Animated Background */}
       <div className="animated-bg" aria-hidden="true">

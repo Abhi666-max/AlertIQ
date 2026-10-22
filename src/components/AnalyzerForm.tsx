@@ -41,25 +41,25 @@ export function AnalyzerForm({
 
   return (
     <div id="analyzer-section" className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pb-12">
-      <div className="editorial-card p-6 sm:p-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-900/8">
+      <div className="glass-card p-6 sm:p-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
           <div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#0F172A] flex items-center gap-2.5">
-              <ShieldAlert className="h-5 w-5 text-emerald-700" />
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-[#0F172A] flex items-center gap-2.5">
+              <ShieldAlert className="h-5 w-5 text-blue-600" />
               Check Any Suspicious Message
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1 font-sans">
+            <p className="text-xs sm:text-sm text-slate-500 mt-1 font-sans">
               Paste any SMS, WhatsApp text, or email to verify its threat profile instantly.
             </p>
           </div>
 
           {/* Channel selector segmented control */}
-          <div className="flex items-center gap-1 rounded-xl border border-slate-900/10 bg-[#EFECE4] p-1 text-xs">
+          <div className="flex items-center gap-1 rounded-xl border border-slate-200 bg-slate-100 p-1 text-xs">
             <button
               type="button"
               onClick={() => setChannel('auto')}
               className={`rounded-lg px-2.5 py-1 font-semibold transition-all ${
-                channel === 'auto' ? 'bg-[#FAF8F3] text-[#0F172A] shadow-xs border border-slate-900/10' : 'text-slate-600 hover:text-slate-900'
+                channel === 'auto' ? 'bg-white text-blue-700 shadow-sm font-bold border border-slate-200' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Auto
@@ -68,7 +68,7 @@ export function AnalyzerForm({
               type="button"
               onClick={() => setChannel('sms')}
               className={`flex items-center gap-1 rounded-lg px-2.5 py-1 font-semibold transition-all ${
-                channel === 'sms' ? 'bg-[#FAF8F3] text-[#0F172A] shadow-xs border border-slate-900/10' : 'text-slate-600 hover:text-slate-900'
+                channel === 'sms' ? 'bg-white text-blue-700 shadow-sm font-bold border border-slate-200' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <MessageSquare className="h-3.5 w-3.5" /> SMS
@@ -77,7 +77,7 @@ export function AnalyzerForm({
               type="button"
               onClick={() => setChannel('email')}
               className={`flex items-center gap-1 rounded-lg px-2.5 py-1 font-semibold transition-all ${
-                channel === 'email' ? 'bg-[#FAF8F3] text-[#0F172A] shadow-xs border border-slate-900/10' : 'text-slate-600 hover:text-slate-900'
+                channel === 'email' ? 'bg-white text-blue-700 shadow-sm font-bold border border-slate-200' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <Mail className="h-3.5 w-3.5" /> Email
@@ -86,7 +86,7 @@ export function AnalyzerForm({
               type="button"
               onClick={() => setChannel('chat')}
               className={`flex items-center gap-1 rounded-lg px-2.5 py-1 font-semibold transition-all ${
-                channel === 'chat' ? 'bg-[#FAF8F3] text-[#0F172A] shadow-xs border border-slate-900/10' : 'text-slate-600 hover:text-slate-900'
+                channel === 'chat' ? 'bg-white text-blue-700 shadow-sm font-bold border border-slate-200' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <MessageCircle className="h-3.5 w-3.5" /> Chat
@@ -103,7 +103,7 @@ export function AnalyzerForm({
               placeholder="Paste suspicious message text here... (e.g., 'URGENT: Your Chase account is locked. Click http://chase-update.xyz/login to verify your identity within 24 hours.')"
               rows={6}
               disabled={isLoading}
-              className="w-full rounded-2xl border border-slate-900/12 bg-[#F2ECE0] p-4 text-sm text-[#0F172A] placeholder-slate-500 focus:outline-none focus:border-slate-900/30 focus:ring-2 focus:ring-slate-900/10 font-mono transition-all resize-y disabled:opacity-60 shadow-inner"
+              className="w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100 font-mono transition-all resize-y disabled:opacity-60 shadow-inner"
             />
 
             {/* Character counter & quick clear */}
@@ -113,7 +113,7 @@ export function AnalyzerForm({
                   {charCount} / {maxChars} characters
                 </span>
                 {charCount < 5 && charCount > 0 && (
-                  <span className="text-amber-700 text-[11px]">(minimum 5 characters required)</span>
+                  <span className="text-amber-600 text-[11px] font-semibold">(minimum 5 characters required)</span>
                 )}
               </div>
 
@@ -121,7 +121,7 @@ export function AnalyzerForm({
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="flex items-center gap-1 text-slate-500 hover:text-red-600 transition-colors font-medium"
+                  className="flex items-center gap-1 text-slate-500 hover:text-red-600 transition-colors font-semibold"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
                   <span>Clear input</span>
@@ -132,17 +132,17 @@ export function AnalyzerForm({
 
           {/* Validation Error banner */}
           {errorMessage && (
-            <div className="mt-4 flex items-center gap-2.5 rounded-xl border border-red-500/30 bg-red-500/10 p-3.5 text-xs text-red-800">
+            <div className="mt-4 flex items-center gap-2.5 rounded-xl border border-red-200 bg-red-50 p-3.5 text-xs text-red-800">
               <AlertCircle className="h-4 w-4 shrink-0 text-red-600" />
               <span>{errorMessage}</span>
             </div>
           )}
 
           {/* Specimen Presets Gallery */}
-          <div className="mt-6 rounded-2xl p-4 bg-[#EFECE4] border border-slate-900/10">
+          <div className="mt-6 rounded-2xl p-4 bg-slate-50 border border-slate-200">
             <div className="flex flex-wrap items-center justify-between gap-2 pb-2">
               <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                <Sparkles className="h-3.5 w-3.5 text-emerald-700" />
+                <Sparkles className="h-3.5 w-3.5 text-blue-600" />
                 <span>Try Real-World Examples:</span>
               </span>
 
@@ -154,8 +154,8 @@ export function AnalyzerForm({
                     onClick={() => setSelectedPresetCategory(cat)}
                     className={`rounded-md px-2.5 py-0.5 capitalize font-medium transition-all ${
                       selectedPresetCategory === cat
-                        ? 'bg-[#0F172A] text-white shadow-2xs font-bold'
-                        : 'text-slate-600 hover:text-slate-900 hover:bg-[#FAF8F3]'
+                        ? 'bg-blue-600 text-white shadow-xs font-bold'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
                     }`}
                   >
                     {cat}
@@ -173,17 +173,17 @@ export function AnalyzerForm({
                     setMessage(sample.fullText);
                     if (sample.channel) setChannel(sample.channel);
                   }}
-                  className="text-left rounded-xl p-3 transition-all text-xs bg-[#FAF8F3] border border-slate-900/8 hover:border-slate-900/20 hover:bg-[#FDFBF7] shadow-2xs group"
+                  className="text-left rounded-xl p-3 transition-all text-xs bg-white border border-slate-200 hover:border-blue-400 hover:bg-blue-50/40 shadow-xs group"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-slate-900 truncate group-hover:text-emerald-800 transition-colors">{sample.title}</span>
+                    <span className="font-semibold text-slate-900 truncate group-hover:text-blue-700 transition-colors">{sample.title}</span>
                     <span
                       className={`text-[9px] px-1.5 py-0.5 rounded-full font-mono uppercase font-bold ${
                         sample.expectedRisk === 'HIGH_RISK'
-                          ? 'bg-rose-500/10 text-rose-800 border border-rose-500/25'
+                          ? 'bg-red-50 text-red-700 border border-red-200'
                           : sample.expectedRisk === 'MEDIUM_RISK'
-                          ? 'bg-amber-500/12 text-amber-800 border border-amber-500/25'
-                          : 'bg-emerald-500/12 text-emerald-800 border border-emerald-500/25'
+                          ? 'bg-amber-50 text-amber-700 border border-amber-200'
+                          : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                       }`}
                     >
                       {sample.expectedRisk.replace('_RISK', '')}
@@ -197,14 +197,14 @@ export function AnalyzerForm({
 
           {/* Action Row */}
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-[11px] text-slate-600 text-center sm:text-left">
-              🔒 <strong className="text-slate-800">100% Private:</strong> Checked in memory and deleted immediately. Nothing saved.
+            <p className="text-[11px] text-slate-500 text-center sm:text-left font-medium">
+              🔒 <strong className="text-slate-700">100% Private:</strong> Checked in memory and deleted immediately. Nothing saved.
             </p>
 
             <button
               type="submit"
               disabled={isLoading || charCount < 5 || charCount > maxChars}
-              className="btn-obsidian w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full px-8 py-3 text-sm font-bold text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-[0.98]"
+              className="btn-aurora w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full px-8 py-3 text-sm font-bold text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-[0.98]"
             >
               {isLoading ? (
                 <>

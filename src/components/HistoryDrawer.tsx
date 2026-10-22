@@ -29,7 +29,7 @@ export function HistoryDrawer({
           <div className="flex items-center justify-between pb-4 border-b border-slate-900/8">
             <div className="flex items-center gap-2">
               <Clock className="h-5 w-5 text-emerald-800" />
-              <h2 className="font-serif text-lg font-bold text-[#0F172A]">Session Vault</h2>
+              <h2 className="font-display text-lg font-bold text-[#0F172A]">Session Vault</h2>
             </div>
             <button
               onClick={onClose}

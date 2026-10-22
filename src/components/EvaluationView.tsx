@@ -39,7 +39,7 @@ export function EvaluationView({ onSelectSampleMessage }: EvaluationViewProps) {
             <Zap className="h-3.5 w-3.5 text-emerald-700" />
             <span>Detection Telemetry &amp; Model Verification</span>
           </div>
-          <h1 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#0F172A]">
+          <h1 className="font-display text-3xl sm:text-4xl font-black text-[#0F172A]">
             Security Benchmark &amp; Telemetry
           </h1>
           <p className="mt-1 text-sm text-slate-600 max-w-2xl font-sans">
@@ -52,47 +52,47 @@ export function EvaluationView({ onSelectSampleMessage }: EvaluationViewProps) {
           disabled={loading}
           className="btn-secondary inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold text-slate-800 shadow-2xs transition-all disabled:opacity-50"
         >
-          <RefreshCw className={`h-3.5 w-3.5 text-emerald-700 ${loading ? 'animate-spin' : ''}`} />
+          <RefreshCw className={`h-3.5 w-3.5 text-blue-600 ${loading ? 'animate-spin' : ''}`} />
           <span>Execute Benchmark Suite</span>
         </button>
       </div>
 
       {loading ? (
         <div className="flex flex-col items-center justify-center py-24 text-slate-600">
-          <RefreshCw className="h-8 w-8 animate-spin text-emerald-700 mb-3" />
+          <RefreshCw className="h-8 w-8 animate-spin text-blue-600 mb-3" />
           <p className="text-sm font-mono font-medium">Running empirical validation tests...</p>
         </div>
       ) : metrics ? (
         <div className="mt-8 space-y-8">
           {/* Key Metric Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="editorial-card rounded-2xl p-5 text-center">
+            <div className="glass-card rounded-2xl p-5 text-center">
               <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold">Exact 3-Class Accuracy</span>
-              <div className="mt-1 font-serif text-3xl sm:text-4xl font-extrabold text-[#0F172A]">
+              <div className="mt-1 font-display text-3xl sm:text-4xl font-extrabold text-[#0F172A]">
                 {Math.round(metrics.accuracy * 100)}%
               </div>
               <p className="mt-1 text-[11px] text-slate-500 font-sans">Ground truth match</p>
             </div>
 
-            <div className="editorial-card rounded-2xl p-5 text-center">
+            <div className="glass-card rounded-2xl p-5 text-center">
               <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold">Threat Precision</span>
-              <div className="mt-1 font-serif text-3xl sm:text-4xl font-extrabold text-teal-800">
+              <div className="mt-1 font-display text-3xl sm:text-4xl font-extrabold text-blue-600">
                 {Math.round(metrics.precision * 100)}%
               </div>
               <p className="mt-1 text-[11px] text-slate-500 font-sans">Zero false alarms</p>
             </div>
 
-            <div className="editorial-card rounded-2xl p-5 text-center">
+            <div className="glass-card rounded-2xl p-5 text-center">
               <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold">Threat Recall</span>
-              <div className="mt-1 font-serif text-3xl sm:text-4xl font-extrabold text-indigo-900">
+              <div className="mt-1 font-display text-3xl sm:text-4xl font-extrabold text-indigo-600">
                 {Math.round(metrics.recall * 100)}%
               </div>
               <p className="mt-1 text-[11px] text-slate-500 font-sans">Zero missed attacks</p>
             </div>
 
-            <div className="editorial-card rounded-2xl p-5 text-center">
+            <div className="glass-card rounded-2xl p-5 text-center">
               <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold">Harmonic F1-Score</span>
-              <div className="mt-1 font-serif text-3xl sm:text-4xl font-extrabold text-emerald-800">
+              <div className="mt-1 font-display text-3xl sm:text-4xl font-extrabold text-emerald-600">
                 {metrics.f1Score.toFixed(2)}
               </div>
               <p className="mt-1 text-[11px] text-slate-500 font-sans">Calibrated balance</p>

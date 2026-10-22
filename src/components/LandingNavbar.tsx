@@ -25,7 +25,7 @@ export function LandingNavbar() {
         {/* CTA */}
         <Link
           href="/scan"
-          className="btn-obsidian inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider text-white"
+          className="btn-aurora inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider text-white"
         >
           <span>Launch Scanner</span>
           <ArrowRight className="h-3.5 w-3.5" />

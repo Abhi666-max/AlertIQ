@@ -39,7 +39,7 @@ export function Logo({ className = '', size = 26, showText = true }: LogoProps) 
           className="font-['Plus_Jakarta_Sans',sans-serif] text-base font-extrabold tracking-tight"
           style={{ color: '#0F172A' }}
         >
-          Alert<span style={{ color: '#047857' }}>IQ</span>
+          Alert<span style={{ color: '#2563EB' }}>IQ</span>
         </span>
       )}
     </div>

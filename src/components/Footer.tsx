@@ -10,7 +10,7 @@ export function Footer({ setActiveTab }: { setActiveTab?: (tab: string) => void 
       className="mt-auto py-10"
       style={{
         borderTop: '1px solid rgba(15, 23, 42, 0.08)',
-        background: 'rgba(246, 243, 236, 0.85)',
+        background: 'rgba(238, 242, 246, 0.90)',
         backdropFilter: 'blur(20px)',
       }}
     >

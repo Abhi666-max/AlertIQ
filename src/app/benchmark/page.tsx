@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer';
 
 export default function BenchmarkPage() {
   return (
-    <div className="relative flex min-h-screen flex-col text-slate-900 overflow-hidden">
+    <div className="relative flex min-h-screen flex-col text-slate-900 bg-[#EEF2F6] overflow-hidden">
       <div className="animated-bg" aria-hidden="true">
         <div className="absolute inset-0 star-field" />
         <div className="absolute inset-0 mesh-grid" style={{ opacity: 0.4 }} />

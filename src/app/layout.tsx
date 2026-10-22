@@ -1,14 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import { Plus_Jakarta_Sans, Inter, JetBrains_Mono, Playfair_Display } from 'next/font/google';
+import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-
-const playfair = Playfair_Display({
-  variable: '--font-serif',
-  subsets: ['latin'],
-  weight: ['400', '600', '700', '800', '900'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-});
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: '--font-display',
@@ -58,9 +50,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${plusJakarta.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
+      className={`${plusJakarta.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body className="min-h-screen bg-[#F6F3EC] text-[#1E293B] selection:bg-[#1E293B] selection:text-[#F6F3EC] relative font-sans">
+      <body className="min-h-screen bg-[#EEF2F6] text-[#0F172A] selection:bg-[#2563EB] selection:text-white relative font-sans">
         <div className="relative z-10 flex min-h-screen flex-col">
           {children}
         </div>

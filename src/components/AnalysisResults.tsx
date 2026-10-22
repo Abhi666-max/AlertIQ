@@ -281,7 +281,7 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
                 </span>
                 <span className="text-xs font-mono text-slate-500">ID: {result.id.slice(0, 8)}</span>
               </div>
-              <h2 className={`font-serif text-2xl sm:text-3xl font-extrabold ${risk.color} mt-1`}>
+              <h2 className={`font-display text-2xl sm:text-3xl font-black ${risk.color} mt-1`}>
                 {risk.title}
               </h2>
               <p className="text-xs sm:text-sm text-slate-700 mt-0.5 font-sans">{risk.description}</p>
@@ -292,7 +292,7 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
           <div className="flex flex-col items-end text-right w-full sm:w-auto">
             <span className="text-[11px] font-mono uppercase tracking-wider text-slate-600 font-semibold">Scam Risk Score</span>
             <div className="flex items-baseline gap-1 mt-0.5">
-              <span className={`font-serif text-4xl sm:text-5xl font-black ${risk.color}`}>
+              <span className={`font-display text-4xl sm:text-5xl font-black ${risk.color}`}>
                 {result.riskScore}
               </span>
               <span className="text-xs text-slate-500 font-mono">/ 100</span>
@@ -367,7 +367,7 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="font-serif text-sm font-bold text-[#0F172A]">
+                    <span className="font-display text-sm font-bold text-[#0F172A]">
                       {ind.type.replace('_', ' ')}
                     </span>
                     <span
