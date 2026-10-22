@@ -18,9 +18,9 @@ export function Logo({ className = '', size = 26, showText = true }: LogoProps) 
         style={{
           width: `${size + 10}px`,
           height: `${size + 10}px`,
-          background: 'linear-gradient(135deg, rgba(124,58,237,0.22) 0%, rgba(79,70,229,0.12) 100%)',
-          border: '1px solid rgba(124,58,237,0.32)',
-          boxShadow: '0 0 14px rgba(124,58,237,0.22), 0 1px 0 rgba(255,255,255,0.07) inset',
+          background: '#0F172A',
+          border: '1px solid rgba(15, 23, 42, 0.16)',
+          boxShadow: '0 2px 6px rgba(15, 23, 42, 0.12)',
         }}
       >
         <Image
@@ -30,16 +30,16 @@ export function Logo({ className = '', size = 26, showText = true }: LogoProps) 
           height={size}
           style={{ width: `${size}px`, height: `${size}px` }}
           priority
-          className="shrink-0"
+          className="shrink-0 brightness-110"
         />
       </div>
 
       {showText && (
         <span
-          className="font-['Plus_Jakarta_Sans',sans-serif] text-base font-bold tracking-tight"
-          style={{ color: '#f0f4ff' }}
+          className="font-['Plus_Jakarta_Sans',sans-serif] text-base font-extrabold tracking-tight"
+          style={{ color: '#0F172A' }}
         >
-          Alert<span style={{ color: '#a78bfa' }}>IQ</span>
+          Alert<span style={{ color: '#047857' }}>IQ</span>
         </span>
       )}
     </div>

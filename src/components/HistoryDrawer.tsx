@@ -22,24 +22,24 @@ export function HistoryDrawer({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-slate-950/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-[#0D0E15] border-l border-white/[0.08] p-6 flex flex-col shadow-2xl text-white">
+        <div className="w-screen max-w-md bg-[#FAF8F3] border-l border-slate-900/10 p-6 flex flex-col shadow-2xl text-slate-900">
           {/* Header */}
-          <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+          <div className="flex items-center justify-between pb-4 border-b border-slate-900/8">
             <div className="flex items-center gap-2">
-              <Clock className="h-5 w-5 text-indigo-400" />
-              <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-white">Session Vault</h2>
+              <Clock className="h-5 w-5 text-emerald-800" />
+              <h2 className="font-serif text-lg font-bold text-[#0F172A]">Session Vault</h2>
             </div>
             <button
               onClick={onClose}
-              className="rounded-lg p-1.5 text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+              className="rounded-lg p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-900/5 transition-colors"
             >
               <X className="h-5 w-5" />
             </button>
           </div>
 
-          <p className="mt-2 text-xs text-slate-400">
+          <p className="mt-2 text-xs text-slate-600 font-sans">
             Stored locally in your browser session. You retain absolute control to view or purge this history at any time.
           </p>
 
@@ -58,16 +58,16 @@ export function HistoryDrawer({
                     onSelectResult(item);
                     onClose();
                   }}
-                  className="group cursor-pointer rounded-xl border border-white/[0.08] bg-[#12141E] p-3.5 hover:border-indigo-500/40 hover:bg-[#161826] transition-all"
+                  className="group cursor-pointer rounded-xl border border-slate-900/8 bg-[#F2ECE0] p-3.5 hover:border-slate-900/20 hover:bg-[#EFECE4] transition-all shadow-2xs"
                 >
                   <div className="flex items-center justify-between">
                     <span
                       className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full uppercase ${
                         item.classification === 'HIGH_RISK'
-                          ? 'bg-red-500/15 text-red-400 border border-red-500/30'
+                          ? 'bg-rose-100 text-rose-900 border border-rose-300'
                           : item.classification === 'MEDIUM_RISK'
-                          ? 'bg-amber-500/15 text-amber-400 border border-amber-500/30'
-                          : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
+                          ? 'bg-amber-100 text-amber-900 border border-amber-300'
+                          : 'bg-emerald-100 text-emerald-900 border border-emerald-300'
                       }`}
                     >
                       {item.classification.replace('_', ' ')}
@@ -77,14 +77,14 @@ export function HistoryDrawer({
                     </span>
                   </div>
 
-                  <p className="mt-2 text-xs text-slate-300 font-mono line-clamp-2">
+                  <p className="mt-2 text-xs text-slate-700 font-mono line-clamp-2">
                     {item.originalMessage}
                   </p>
 
-                  <div className="mt-2.5 flex items-center justify-between text-[11px] text-slate-400 group-hover:text-white font-semibold">
+                  <div className="mt-2.5 flex items-center justify-between text-[11px] text-slate-600 group-hover:text-slate-900 font-semibold">
                     <span>Threat Index: {item.riskScore}/100</span>
-                    <span className="flex items-center gap-1 text-indigo-400">
-                      Inspect <ArrowRight className="h-3 w-3 text-indigo-400" />
+                    <span className="flex items-center gap-1 text-emerald-800">
+                      Inspect <ArrowRight className="h-3 w-3 text-emerald-800" />
                     </span>
                   </div>
                 </div>
@@ -94,10 +94,10 @@ export function HistoryDrawer({
 
           {/* Footer controls */}
           {history.length > 0 && (
-            <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between">
+            <div className="pt-4 border-t border-slate-900/8 flex items-center justify-between">
               <button
                 onClick={onClearHistory}
-                className="flex items-center gap-1.5 text-xs text-red-400 hover:text-red-300 transition-colors font-semibold"
+                className="flex items-center gap-1.5 text-xs text-rose-700 hover:text-rose-900 transition-colors font-semibold"
               >
                 <Trash2 className="h-3.5 w-3.5" />
                 <span>Purge Session History</span>

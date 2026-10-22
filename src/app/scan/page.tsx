@@ -74,7 +74,7 @@ export default function ScanPage() {
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col text-white overflow-hidden">
+    <div className="relative flex min-h-screen flex-col text-slate-900 overflow-hidden">
 
       {/* CSS Animated Background */}
       <div className="animated-bg" aria-hidden="true">
@@ -91,14 +91,14 @@ export default function ScanPage() {
           <div className="flex items-center justify-between">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-slate-200 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               Back to Overview
             </Link>
             <button
               onClick={() => setIsHistoryOpen(true)}
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-violet-400 hover:text-violet-300 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-800 hover:text-emerald-950 transition-colors"
             >
               <Clock className="h-3.5 w-3.5" />
               <span>Session Vault ({history.length} saved)</span>

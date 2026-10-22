@@ -13,7 +13,6 @@ import {
   Link2,
   CheckCircle2,
   Info,
-  Cpu,
   Zap,
 } from 'lucide-react';
 import { AnalysisResult } from '@/lib/types';
@@ -26,58 +25,58 @@ interface AnalysisResultsProps {
 export function AnalysisResults({ result, onReset }: AnalysisResultsProps) {
   const [copied, setCopied] = useState(false);
 
-  // Classification styling tokens (Midnight Obsidian Dark Theme)
+  // Classification styling tokens (Warm Editorial Luxe Theme)
   const getRiskConfig = (classification: string) => {
     switch (classification) {
       case 'HIGH_RISK':
         return {
           title: 'High Risk Scam Detected',
-          color: 'text-red-400',
-          bg: 'bg-red-500/10',
-          border: 'border-red-500/30',
-          badgeBg: 'bg-red-500/20',
-          badgeText: 'text-red-300',
-          badgeBorder: 'border-red-500/40',
-          gaugeColor: 'bg-red-500',
+          color: 'text-rose-900',
+          bg: 'bg-rose-50/90',
+          border: 'border-rose-200',
+          badgeBg: 'bg-rose-100',
+          badgeText: 'text-rose-900',
+          badgeBorder: 'border-rose-300',
+          gaugeColor: 'bg-rose-600',
           icon: ShieldAlert,
           description: 'Strong deceptive indicators or known social engineering attack signatures were detected.',
         };
       case 'MEDIUM_RISK':
         return {
           title: 'Caution Advised / Suspicious',
-          color: 'text-amber-400',
-          bg: 'bg-amber-500/10',
-          border: 'border-amber-500/30',
-          badgeBg: 'bg-amber-500/20',
-          badgeText: 'text-amber-300',
-          badgeBorder: 'border-amber-500/40',
-          gaugeColor: 'bg-amber-500',
+          color: 'text-amber-900',
+          bg: 'bg-amber-50/90',
+          border: 'border-amber-200',
+          badgeBg: 'bg-amber-100',
+          badgeText: 'text-amber-900',
+          badgeBorder: 'border-amber-300',
+          gaugeColor: 'bg-amber-600',
           icon: AlertTriangle,
           description: 'Suspicious elements are present, but context is ambiguous. Exercise caution before proceeding.',
         };
       case 'LOW_APPARENT_RISK':
         return {
           title: 'Low Apparent Risk / Likely Safe',
-          color: 'text-emerald-400',
-          bg: 'bg-emerald-500/10',
-          border: 'border-emerald-500/30',
-          badgeBg: 'bg-emerald-500/20',
-          badgeText: 'text-emerald-300',
-          badgeBorder: 'border-emerald-500/40',
-          gaugeColor: 'bg-emerald-500',
+          color: 'text-emerald-900',
+          bg: 'bg-emerald-50/90',
+          border: 'border-emerald-200',
+          badgeBg: 'bg-emerald-100',
+          badgeText: 'text-emerald-900',
+          badgeBorder: 'border-emerald-300',
+          gaugeColor: 'bg-emerald-600',
           icon: ShieldCheck,
           description: 'No obvious scam signatures, coercive language, or credential theft vectors were detected.',
         };
       default:
         return {
           title: 'Inconclusive Result',
-          color: 'text-purple-400',
-          bg: 'bg-purple-500/10',
-          border: 'border-purple-500/30',
-          badgeBg: 'bg-purple-500/20',
-          badgeText: 'text-purple-300',
-          badgeBorder: 'border-purple-500/40',
-          gaugeColor: 'bg-purple-500',
+          color: 'text-slate-800',
+          bg: 'bg-slate-100',
+          border: 'border-slate-300',
+          badgeBg: 'bg-slate-200',
+          badgeText: 'text-slate-800',
+          badgeBorder: 'border-slate-400',
+          gaugeColor: 'bg-slate-600',
           icon: HelpCircle,
           description: 'Insufficient content or ambiguous evidence to make a definitive classification.',
         };
@@ -174,7 +173,7 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
     const rawText = result.originalMessage;
     if (!result.indicators || result.indicators.length === 0) {
       return (
-        <div className="font-mono text-xs sm:text-sm text-slate-300 leading-relaxed break-words whitespace-pre-wrap">
+        <div className="font-mono text-xs sm:text-sm text-slate-800 leading-relaxed break-words whitespace-pre-wrap">
           {rawText}
         </div>
       );
@@ -209,7 +208,7 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
 
     if (spans.length === 0) {
       return (
-        <div className="font-mono text-xs sm:text-sm text-slate-300 leading-relaxed break-words whitespace-pre-wrap">
+        <div className="font-mono text-xs sm:text-sm text-slate-800 leading-relaxed break-words whitespace-pre-wrap">
           {rawText}
         </div>
       );
@@ -248,8 +247,8 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
           key={`mark-${i}`}
           className={`rounded-md px-1.5 py-0.5 font-bold ${
             span.severity === 'high'
-              ? 'bg-red-500/25 text-red-200 border border-red-500/50'
-              : 'bg-amber-500/25 text-amber-200 border border-amber-500/50'
+              ? 'bg-rose-200 text-rose-950 border border-rose-300'
+              : 'bg-amber-200 text-amber-950 border border-amber-300'
           }`}
           title={`Identified threat signal: ${span.type}`}
         >
@@ -263,42 +262,42 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
       elements.push(<span key={`text-end`}>{rawText.substring(lastIdx)}</span>);
     }
 
-    return <div className="font-mono text-xs sm:text-sm text-slate-200 leading-relaxed break-words">{elements}</div>;
+    return <div className="font-mono text-xs sm:text-sm text-slate-900 leading-relaxed break-words">{elements}</div>;
   };
 
   return (
     <div id="results-section" className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pb-16">
       {/* 1. Header Banner */}
-      <div className={`rounded-2xl border ${risk.border} ${risk.bg} p-6 sm:p-8 shadow-2xl transition-all`}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-white/[0.08]">
+      <div className={`rounded-2xl border ${risk.border} ${risk.bg} p-6 sm:p-8 shadow-xs transition-all`}>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-slate-900/10">
           <div className="flex items-center gap-4">
-            <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${risk.badgeBorder} ${risk.badgeBg} shadow-2xs`}>
-              <RiskIcon className={`h-5 w-5 ${risk.color}`} />
+            <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border ${risk.badgeBorder} ${risk.badgeBg} shadow-2xs`}>
+              <RiskIcon className={`h-6 w-6 ${risk.color}`} />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className={`text-xs font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${risk.badgeBorder} ${risk.badgeBg} ${risk.badgeText}`}>
+                <span className={`text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${risk.badgeBorder} ${risk.badgeBg} ${risk.badgeText}`}>
                   {result.classification.replace('_', ' ')}
                 </span>
-                <span className="text-xs font-mono text-slate-400">ID: {result.id.slice(0, 8)}</span>
+                <span className="text-xs font-mono text-slate-500">ID: {result.id.slice(0, 8)}</span>
               </div>
-              <h2 className={`font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-3xl font-extrabold ${risk.color} mt-1`}>
+              <h2 className={`font-serif text-2xl sm:text-3xl font-extrabold ${risk.color} mt-1`}>
                 {risk.title}
               </h2>
-              <p className="text-xs sm:text-sm text-slate-300 mt-0.5">{risk.description}</p>
+              <p className="text-xs sm:text-sm text-slate-700 mt-0.5 font-sans">{risk.description}</p>
             </div>
           </div>
 
           {/* Risk Severity Index */}
           <div className="flex flex-col items-end text-right w-full sm:w-auto">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold">Scam Risk Score</span>
+            <span className="text-[11px] font-mono uppercase tracking-wider text-slate-600 font-semibold">Scam Risk Score</span>
             <div className="flex items-baseline gap-1 mt-0.5">
-              <span className={`font-['Plus_Jakarta_Sans',sans-serif] text-4xl font-extrabold ${risk.color}`}>
+              <span className={`font-serif text-4xl sm:text-5xl font-black ${risk.color}`}>
                 {result.riskScore}
               </span>
-              <span className="text-xs text-slate-400 font-mono">/ 100</span>
+              <span className="text-xs text-slate-500 font-mono">/ 100</span>
             </div>
-            <div className="w-32 h-2 bg-white/10 rounded-full mt-2 overflow-hidden">
+            <div className="w-32 h-2.5 bg-slate-900/10 rounded-full mt-2 overflow-hidden">
               <div
                 className={`h-full rounded-full ${risk.gaugeColor}`}
                 style={{ width: `${result.riskScore}%` }}
@@ -308,55 +307,55 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
         </div>
 
         {/* Engine metadata bar */}
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-300">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-700">
           <div className="flex items-center gap-2 font-mono text-[11px]">
-            <Zap className="h-3.5 w-3.5 text-amber-400" />
-            <span>Smart Security Engine Active</span>
+            <Zap className="h-3.5 w-3.5 text-amber-600" />
+            <span>Neural Intelligence Verified</span>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px] font-mono text-slate-400">
+          <div className="flex items-center gap-4 text-[11px] font-mono text-slate-600">
             <span>Checked in: {result.providerDetails.latencyMs}ms</span>
-            <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" /> Verified Evidence Match
+            <span className="flex items-center gap-1 text-emerald-800 font-semibold">
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-700" /> Evidence Verified
             </span>
           </div>
         </div>
       </div>
 
       {/* 2. Executive Assessment */}
-      <div className="mt-6 lux-card rounded-2xl p-6 sm:p-7">
-        <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold flex items-center gap-2">
-          <Info className="h-4 w-4 text-indigo-400" />
+      <div className="mt-6 editorial-card p-6 sm:p-7">
+        <h3 className="text-xs font-mono uppercase tracking-wider text-slate-600 font-bold flex items-center gap-2">
+          <Info className="h-4 w-4 text-emerald-700" />
           Why This Message Was Flagged
         </h3>
-        <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+        <p className="mt-3 text-sm sm:text-base text-slate-800 leading-relaxed font-sans">
           {result.summary}
         </p>
       </div>
 
       {/* 3. Message Highlighter Specimen View */}
-      <div className="mt-6 lux-card rounded-2xl p-6">
-        <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
-          <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">
+      <div className="mt-6 editorial-card p-6">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-900/8">
+          <h3 className="text-xs font-mono uppercase tracking-wider text-slate-600 font-bold">
             Highlighted Words &amp; Links in Your Message
           </h3>
-          <span className="text-[11px] font-semibold text-slate-400">
-            {result.indicators.length} scam {result.indicators.length === 1 ? 'trick' : 'tricks'} found
+          <span className="text-[11px] font-semibold text-slate-600">
+            {result.indicators.length} scam {result.indicators.length === 1 ? 'trick' : 'tricks'} identified
           </span>
         </div>
-        <div className="mt-4 rounded-xl bg-[#08090A] p-4 border border-white/10">
+        <div className="mt-4 rounded-xl bg-[#F2ECE0] p-4 border border-slate-900/10 shadow-inner">
           {renderHighlightedMessage()}
         </div>
       </div>
 
       {/* 4. Observable Threat Indicators */}
-      <div className="mt-6 lux-card rounded-2xl p-6">
-        <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold pb-3 border-b border-white/[0.08]">
-          Scammer Tricks Detected ({result.indicators.length})
+      <div className="mt-6 editorial-card p-6">
+        <h3 className="text-xs font-mono uppercase tracking-wider text-slate-600 font-bold pb-3 border-b border-slate-900/8">
+          Deceptive Vectors Identified ({result.indicators.length})
         </h3>
 
         {result.indicators.length === 0 ? (
-          <div className="mt-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 p-4 text-center text-xs text-emerald-300 font-medium">
+          <div className="mt-4 rounded-xl bg-emerald-50 border border-emerald-200 p-4 text-center text-xs text-emerald-800 font-medium">
             No specific deceptive indicators or coercive social engineering patterns were detected in this message.
           </div>
         ) : (
@@ -364,20 +363,20 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
             {result.indicators.map((ind, idx) => (
               <div
                 key={idx}
-                className="rounded-xl border border-white/[0.08] bg-[#12141D] p-4 hover:border-indigo-500/40 transition-all shadow-2xs"
+                className="rounded-xl border border-slate-900/8 bg-[#FAF8F3] p-4.5 hover:border-slate-900/20 transition-all shadow-2xs"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold uppercase text-white">
+                    <span className="font-serif text-sm font-bold text-[#0F172A]">
                       {ind.type.replace('_', ' ')}
                     </span>
                     <span
                       className={`rounded-full px-2 py-0.5 font-mono text-[10px] uppercase font-bold ${
                         ind.severity === 'high'
-                          ? 'bg-red-500/15 text-red-400 border border-red-500/30'
+                          ? 'bg-rose-100 text-rose-900 border border-rose-300'
                           : ind.severity === 'medium'
-                          ? 'bg-amber-500/15 text-amber-400 border border-amber-500/30'
-                          : 'bg-white/10 text-slate-300 border border-white/10'
+                          ? 'bg-amber-100 text-amber-900 border border-amber-300'
+                          : 'bg-slate-100 text-slate-800 border border-slate-300'
                       }`}
                     >
                       {ind.severity} Severity
@@ -387,12 +386,12 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
                 </div>
 
                 {/* Evidence Quote */}
-                <div className="mt-2.5 rounded-lg bg-[#08090A] p-2.5 border border-white/10 font-mono text-xs text-slate-300">
+                <div className="mt-2.5 rounded-lg bg-[#F2ECE0] p-2.5 border border-slate-900/10 font-mono text-xs text-slate-800">
                   <span className="text-slate-500 select-none">Evidence: </span>
-                  <span className="text-white font-bold">&ldquo;{ind.evidence}&rdquo;</span>
+                  <span className="text-slate-950 font-bold">&ldquo;{ind.evidence}&rdquo;</span>
                 </div>
 
-                <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-normal">
+                <p className="mt-2 text-xs sm:text-sm text-slate-700 leading-normal font-sans">
                   {ind.explanation}
                 </p>
               </div>
@@ -402,19 +401,19 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
       </div>
 
       {/* 5. URL Threat Intelligence Review */}
-      <div className="mt-6 lux-card rounded-2xl p-6">
-        <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
-          <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold flex items-center gap-2">
-            <Link2 className="h-4 w-4 text-indigo-400" />
+      <div className="mt-6 editorial-card p-6">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-900/8">
+          <h3 className="text-xs font-mono uppercase tracking-wider text-slate-600 font-bold flex items-center gap-2">
+            <Link2 className="h-4 w-4 text-emerald-700" />
             Embedded URL &amp; Domain Safety Review
           </h3>
-          <span className="text-[11px] font-mono text-slate-400">
+          <span className="text-[11px] font-mono text-slate-500">
             Provider: {result.providerDetails.threatIntelProvider}
           </span>
         </div>
 
         {result.extracted_urls.length === 0 ? (
-          <div className="mt-4 rounded-xl bg-white/5 border border-white/10 p-4 text-xs text-slate-400 text-center">
+          <div className="mt-4 rounded-xl bg-[#F2ECE0] border border-slate-900/8 p-4 text-xs text-slate-600 text-center">
             No external hyperlinks were found in this message body.
           </div>
         ) : (
@@ -422,36 +421,36 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
             {result.extracted_urls.map((urlItem, idx) => (
               <div
                 key={idx}
-                className="rounded-xl border border-white/[0.08] bg-[#12141D] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-2xs"
+                className="rounded-xl border border-slate-900/8 bg-[#FAF8F3] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-2xs"
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-white truncate max-w-sm">
+                    <span className="font-mono font-bold text-slate-900 truncate max-w-sm">
                       {urlItem.domain}
                     </span>
                     <span
                       className={`rounded-full px-2 py-0.5 font-mono text-[10px] uppercase font-bold ${
                         urlItem.status === 'malicious'
-                          ? 'bg-red-500/15 text-red-400 border border-red-500/30'
+                          ? 'bg-rose-100 text-rose-900 border border-rose-300'
                           : urlItem.status === 'suspicious'
-                          ? 'bg-amber-500/15 text-amber-400 border border-amber-500/30'
+                          ? 'bg-amber-100 text-amber-900 border border-amber-300'
                           : urlItem.status === 'clean'
-                          ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
-                          : 'bg-white/10 text-slate-300 border border-white/10'
+                          ? 'bg-emerald-100 text-emerald-900 border border-emerald-300'
+                          : 'bg-slate-100 text-slate-800 border border-slate-300'
                       }`}
                     >
                       {urlItem.status}
                     </span>
                   </div>
-                  <p className="font-mono text-[11px] text-slate-400 truncate max-w-md">
+                  <p className="font-mono text-[11px] text-slate-500 truncate max-w-md">
                     Target: {urlItem.url}
                   </p>
                   {urlItem.threatDetails && (
-                    <p className="text-[11px] text-slate-300">{urlItem.threatDetails}</p>
+                    <p className="text-[11px] text-slate-700">{urlItem.threatDetails}</p>
                   )}
                 </div>
 
-                <div className="text-[10px] font-mono text-amber-400/90 shrink-0 font-medium">
+                <div className="text-[10px] font-mono text-amber-800 shrink-0 font-medium">
                   ⚠️ Direct opening blocked for safety
                 </div>
               </div>
@@ -461,14 +460,14 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
       </div>
 
       {/* 6. Practical Defensive Recommendations */}
-      <div className="mt-6 lux-card rounded-2xl p-6">
-        <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold pb-3 border-b border-white/[0.08]">
+      <div className="mt-6 editorial-card p-6">
+        <h3 className="text-xs font-mono uppercase tracking-wider text-slate-600 font-bold pb-3 border-b border-slate-900/8">
           What You Should Do Right Now
         </h3>
         <ul className="mt-4 space-y-2.5">
           {result.recommended_actions.map((act, idx) => (
-            <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400 mt-0.5" />
+            <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-800">
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-700 mt-0.5" />
               <span>{act}</span>
             </li>
           ))}
@@ -479,25 +478,25 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
         <button
           onClick={onReset}
-          className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-2.5 text-xs font-semibold text-slate-300 hover:bg-white/10 hover:text-white shadow-xs transition-all active:scale-[0.98]"
+          className="btn-secondary inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-slate-800 shadow-2xs transition-all active:scale-[0.98]"
         >
-          <RotateCcw className="h-3.5 w-3.5 text-slate-400" />
+          <RotateCcw className="h-3.5 w-3.5 text-slate-600" />
           <span>Check Another Message</span>
         </button>
 
         <div className="flex items-center gap-3">
           <button
             onClick={handleCopy}
-            className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-semibold text-slate-300 hover:bg-white/10 hover:text-white shadow-xs transition-all active:scale-[0.98]"
+            className="btn-secondary inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold text-slate-800 shadow-2xs transition-all active:scale-[0.98]"
           >
             {copied ? (
               <>
-                <Check className="h-3.5 w-3.5 text-emerald-400" />
-                <span className="text-emerald-400 font-bold">Copied!</span>
+                <Check className="h-3.5 w-3.5 text-emerald-700" />
+                <span className="text-emerald-800 font-bold">Copied!</span>
               </>
             ) : (
               <>
-                <Copy className="h-3.5 w-3.5 text-slate-400" />
+                <Copy className="h-3.5 w-3.5 text-slate-600" />
                 <span>Copy Summary</span>
               </>
             )}
@@ -505,7 +504,7 @@ ${result.recommended_actions.map((act) => `- [ ] ${act}`).join('\n')}
 
           <button
             onClick={handleDownload}
-            className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-xs font-semibold text-white shadow-lg shadow-indigo-600/30 hover:bg-indigo-500 transition-all active:scale-[0.98]"
+            className="btn-obsidian inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-xs transition-all active:scale-[0.98]"
           >
             <Download className="h-3.5 w-3.5" />
             <span>Export Incident Report (.md)</span>

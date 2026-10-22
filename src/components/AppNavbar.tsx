@@ -30,7 +30,7 @@ export function AppNavbar({ onOpenHistory, historyCount = 0 }: AppNavbarProps) {
           </Link>
           <Link
             href="/"
-            className="hidden sm:inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-violet-300 transition-colors pl-3 border-l border-white/10"
+            className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-slate-900 transition-colors pl-3 border-l border-slate-900/10"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             <span>Overview</span>
@@ -38,17 +38,17 @@ export function AppNavbar({ onOpenHistory, historyCount = 0 }: AppNavbarProps) {
         </div>
 
         {/* Center: Tab switcher */}
-        <nav className="flex items-center gap-1 bg-white/[0.04] backdrop-blur-sm p-1 rounded-xl border border-white/10">
+        <nav className="flex items-center gap-1 bg-[#EFECE4] p-1 rounded-xl border border-slate-900/10">
           {workspaceTabs.map((tab) => {
             const isActive = pathname === tab.href;
             return (
               <Link
                 key={tab.href}
                 href={tab.href}
-                className={`rounded-lg px-3 py-1.5 text-xs sm:text-sm font-semibold transition-all ${
+                className={`rounded-lg px-3.5 py-1.5 text-xs sm:text-sm font-semibold transition-all ${
                   isActive
-                    ? 'bg-violet-600/25 text-violet-200 shadow-sm border border-violet-500/25 font-bold'
-                    : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
+                    ? 'bg-[#FAF8F3] text-[#0F172A] shadow-xs border border-slate-900/10 font-bold'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-[#FAF8F3]/60'
                 }`}
               >
                 {tab.label}
@@ -59,13 +59,13 @@ export function AppNavbar({ onOpenHistory, historyCount = 0 }: AppNavbarProps) {
 
         {/* Right */}
         <div className="flex items-center gap-2.5">
-          <div className="hidden lg:flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-sm px-3 py-1 text-xs text-slate-300">
+          <div className="hidden lg:flex items-center gap-2 rounded-full border border-slate-900/10 bg-[#FAF8F3] px-3.5 py-1 text-xs text-slate-700 shadow-2xs">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-600" />
             </span>
-            <ShieldCheck className="h-3 w-3 text-cyan-400" />
-            <span className="font-mono text-[10px] font-semibold text-slate-400">
+            <ShieldCheck className="h-3.5 w-3.5 text-emerald-700" />
+            <span className="font-mono text-[10px] font-semibold text-slate-600">
               Neural Defense Active
             </span>
           </div>
@@ -73,13 +73,13 @@ export function AppNavbar({ onOpenHistory, historyCount = 0 }: AppNavbarProps) {
           {onOpenHistory && (
             <button
               onClick={onOpenHistory}
-              className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur-sm px-3 py-1.5 text-xs font-semibold text-slate-300 hover:bg-white/10 hover:text-violet-300 transition-all"
+              className="flex items-center gap-1.5 rounded-xl border border-slate-900/10 bg-[#FAF8F3] px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-[#EFECE4] hover:text-slate-900 transition-all shadow-2xs"
               title="Inspect previous scans in session vault"
             >
-              <Clock className="h-3.5 w-3.5 text-slate-400" />
+              <Clock className="h-3.5 w-3.5 text-slate-500" />
               <span className="hidden sm:inline">Vault</span>
               {historyCount > 0 && (
-                <span className="rounded-full bg-violet-600 px-1.5 py-0.5 font-mono text-[9px] text-white">
+                <span className="rounded-full bg-[#0F172A] px-1.5 py-0.5 font-mono text-[9px] text-white">
                   {historyCount}
                 </span>
               )}

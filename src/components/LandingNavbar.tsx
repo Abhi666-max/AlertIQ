@@ -16,16 +16,16 @@ export function LandingNavbar() {
         </Link>
 
         {/* Nav links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
-          <a href="#features"     className="hover:text-slate-200 transition-colors">Capabilities</a>
-          <a href="#how-it-works" className="hover:text-slate-200 transition-colors">How It Works</a>
-          <a href="#taxonomy"     className="hover:text-slate-200 transition-colors">Threats</a>
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+          <a href="#features"     className="hover:text-slate-900 transition-colors">Capabilities</a>
+          <a href="#how-it-works" className="hover:text-slate-900 transition-colors">How It Works</a>
+          <a href="#taxonomy"     className="hover:text-slate-900 transition-colors">Threats</a>
         </nav>
 
         {/* CTA */}
         <Link
           href="/scan"
-          className="btn-aurora inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold text-white"
+          className="btn-obsidian inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider text-white"
         >
           <span>Launch Scanner</span>
           <ArrowRight className="h-3.5 w-3.5" />

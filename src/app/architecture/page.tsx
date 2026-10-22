@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer';
 
 export default function ArchitecturePage() {
   return (
-    <div className="relative flex min-h-screen flex-col text-white overflow-hidden">
+    <div className="relative flex min-h-screen flex-col text-slate-900 overflow-hidden">
       <div className="animated-bg" aria-hidden="true">
         <div className="absolute inset-0 star-field" />
         <div className="absolute inset-0 mesh-grid" style={{ opacity: 0.4 }} />
