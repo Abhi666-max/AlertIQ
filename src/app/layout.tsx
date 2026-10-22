@@ -52,8 +52,7 @@ export default function RootLayout({
       lang="en"
       className={`${plusJakarta.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body className="min-h-screen bg-[#f8fafc] text-[#0f172a] dot-canvas selection:bg-blue-600 selection:text-white relative">
-        <div className="ambient-glow fixed inset-0 pointer-events-none z-0" />
+      <body className="min-h-screen bg-[#07080f] text-[#f0f4ff] selection:bg-violet-600 selection:text-white relative font-sans">
         <div className="relative z-10 flex min-h-screen flex-col">
           {children}
         </div>
