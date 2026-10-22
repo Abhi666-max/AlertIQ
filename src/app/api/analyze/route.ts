@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { analysisRequestSchema, AnalysisResult } from '@/lib/types';
 import { extractUrls, checkUrlsReputation } from '@/lib/urlSafety';
-import { analyzeMessageWithGemini } from '@/lib/geminiProvider';
+import { analyzeMessageWithGroq } from '@/lib/groqProvider';
 import { verifyAndCleanEvidence } from '@/lib/evidenceVerifier';
 
 // Simple in-memory sliding window rate limiter (max 20 requests per IP per minute)
@@ -50,10 +50,10 @@ export async function POST(req: NextRequest) {
     // Step 1: Safely extract candidate URLs
     const candidateUrls = extractUrls(message);
 
-    // Step 2: Check URL reputation concurrently with AI analysis
+    // Step 2: Check URL reputation concurrently with Groq AI analysis
     const [urlReputationResult, aiResult] = await Promise.all([
       checkUrlsReputation(candidateUrls),
-      analyzeMessageWithGemini(message),
+      analyzeMessageWithGroq(message),
     ]);
 
     // Step 3: Ground & Verify Evidence against the original message
