@@ -5,7 +5,7 @@ import './globals.css';
 const plusJakarta = Plus_Jakarta_Sans({
   variable: '--font-display',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['500', '600', '700', '800'],
   display: 'swap',
 });
 
@@ -29,17 +29,17 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'AlertIQ — Enterprise Scam Message Detection & Threat Intelligence Platform',
+  title: 'AlertIQ — Scam Message Detection & Threat Intelligence',
   description:
-    'Identify and dissect sophisticated social engineering, phishing messages, and deceptive links using advanced neural threat reasoning, verbatim evidence verification, and domain reputation telemetry.',
+    'Paste any suspicious SMS, WhatsApp message, or email. AlertIQ checks for fake links, impersonation, and fraudulent tactics in seconds.',
   keywords: [
     'scam detection',
-    'phishing intelligence',
-    'AI cybersecurity',
-    'social engineering defense',
-    'threat analysis platform',
+    'phishing scanner',
+    'message safety',
+    'fraud detection',
+    'cybersecurity',
   ],
-  authors: [{ name: 'AlertIQ Cybersecurity Systems' }],
+  authors: [{ name: 'AlertIQ Security' }],
 };
 
 export default function RootLayout({
@@ -52,7 +52,7 @@ export default function RootLayout({
       lang="en"
       className={`${plusJakarta.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body className="min-h-screen bg-[#EEF2F6] text-[#0F172A] selection:bg-[#2563EB] selection:text-white relative font-sans">
+      <body className="min-h-screen bg-[#F8FAFC] text-[#090A0F] selection:bg-[#DC2626] selection:text-white relative font-sans">
         <div className="relative z-10 flex min-h-screen flex-col">
           {children}
         </div>

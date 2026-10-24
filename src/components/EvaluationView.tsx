@@ -43,7 +43,7 @@ export function EvaluationView({ onSelectSampleMessage }: EvaluationViewProps) {
             Security Benchmark &amp; Telemetry
           </h1>
           <p className="mt-1 text-sm text-slate-600 max-w-2xl font-sans">
-            Empirical validation measured across a benchmark corpus of 20 realistic phishing, social engineering, and benign communications.
+            Empirical validation measured across a benchmark corpus of {metrics ? metrics.totalSamples : '…'} realistic phishing, social engineering, and benign communications.
           </p>
         </div>
 
@@ -153,37 +153,37 @@ export function EvaluationView({ onSelectSampleMessage }: EvaluationViewProps) {
                 Benchmark Corpus Stratification
               </h3>
               <p className="mt-2 text-xs text-slate-600 font-sans">
-                Balanced distribution across 20 synthetic &amp; realistic message vectors.
+                Distribution across {metrics ? metrics.totalSamples : '…'} benchmark message vectors.
               </p>
 
               <div className="mt-6 space-y-4">
                 <div>
                   <div className="flex justify-between text-xs font-mono mb-1">
                     <span className="text-rose-900 font-bold">High Risk Vectors: {metrics.highRiskCount}</span>
-                    <span className="text-slate-500 font-bold">40%</span>
+                    <span className="text-slate-500 font-bold">{Math.round((metrics.highRiskCount / metrics.totalSamples) * 100)}%</span>
                   </div>
                   <div className="h-2 w-full bg-slate-900/10 rounded-full overflow-hidden">
-                    <div className="h-full bg-rose-600 rounded-full" style={{ width: '40%' }} />
+                    <div className="h-full bg-rose-600 rounded-full" style={{ width: `${Math.round((metrics.highRiskCount / metrics.totalSamples) * 100)}%` }} />
                   </div>
                 </div>
 
                 <div>
                   <div className="flex justify-between text-xs font-mono mb-1">
                     <span className="text-amber-900 font-bold">Medium / Ambiguous: {metrics.mediumRiskCount}</span>
-                    <span className="text-slate-500 font-bold">20%</span>
+                    <span className="text-slate-500 font-bold">{Math.round((metrics.mediumRiskCount / metrics.totalSamples) * 100)}%</span>
                   </div>
                   <div className="h-2 w-full bg-slate-900/10 rounded-full overflow-hidden">
-                    <div className="h-full bg-amber-600 rounded-full" style={{ width: '20%' }} />
+                    <div className="h-full bg-amber-600 rounded-full" style={{ width: `${Math.round((metrics.mediumRiskCount / metrics.totalSamples) * 100)}%` }} />
                   </div>
                 </div>
 
                 <div>
                   <div className="flex justify-between text-xs font-mono mb-1">
                     <span className="text-emerald-900 font-bold">Benign Messages: {metrics.lowRiskCount}</span>
-                    <span className="text-slate-500 font-bold">40%</span>
+                    <span className="text-slate-500 font-bold">{Math.round((metrics.lowRiskCount / metrics.totalSamples) * 100)}%</span>
                   </div>
                   <div className="h-2 w-full bg-slate-900/10 rounded-full overflow-hidden">
-                    <div className="h-full bg-emerald-600 rounded-full" style={{ width: '40%' }} />
+                    <div className="h-full bg-emerald-600 rounded-full" style={{ width: `${Math.round((metrics.lowRiskCount / metrics.totalSamples) * 100)}%` }} />
                   </div>
                 </div>
               </div>
