@@ -44,7 +44,7 @@ export async function analyzeMessageWithGroq(
 }> {
   const startTime = Date.now();
   const apiKey = providedKey || process.env.GROQ_API_KEY;
-  const configuredModel = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
+  const configuredModel = process.env.GROQ_MODEL || 'openai/gpt-oss-120b';
 
   if (!apiKey) {
     const heuristicResult = analyzeWithHeuristics(message);
