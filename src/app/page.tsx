@@ -119,31 +119,31 @@ export default function LandingPage() {
               </a>
             </div>
 
-            {/* 3 Metric Cards */}
+            {/* 3 Value Pillars */}
             <div className="mt-12 mx-auto max-w-3xl rounded-2xl border border-slate-200 bg-white p-5 shadow-xs">
               <div className="grid grid-cols-3 gap-4 divide-x divide-slate-100 text-center">
                 <div>
                   <div className="font-display text-2xl sm:text-3xl font-extrabold text-[#DC2626]">
-                    {metrics ? `${metrics.accuracy}%` : '98%'}
+                    &lt; 1.5s
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5 font-medium">
-                    Detection Accuracy
+                    Instant AI Threat Verdict
                   </div>
                 </div>
                 <div>
                   <div className="font-display text-2xl sm:text-3xl font-extrabold text-[#090A0F]">
-                    {metrics ? metrics.totalSamples : '48'}
+                    Multi-Vector
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5 font-medium">
-                    Scam Patterns Tested
+                    SMS, Email, Chat & Links
                   </div>
                 </div>
                 <div>
                   <div className="font-display text-2xl sm:text-3xl font-extrabold text-emerald-600">
-                    100%
+                    Zero Logs
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5 font-medium">
-                    Private & Ephemeral
+                    100% Private & Ephemeral
                   </div>
                 </div>
               </div>
