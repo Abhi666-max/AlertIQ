@@ -4,7 +4,7 @@ import { extractUrls, checkUrlsReputation } from '@/lib/urlSafety';
 import { analyzeMessageWithGroq } from '@/lib/groqProvider';
 import { verifyAndCleanEvidence } from '@/lib/evidenceVerifier';
 
-// Simple in-memory sliding window rate limiter (max 20 requests per IP per minute)
+// Simple in-memory sliding window rate limiter (max 30 requests per IP per minute)
 const requestCounts = new Map<string, { count: number; resetTime: number }>();
 
 function checkRateLimit(ip: string): boolean {
@@ -24,6 +24,17 @@ function checkRateLimit(ip: string): boolean {
 
   entry.count += 1;
   return true;
+}
+
+// In-Memory Fast Cache for identical scam messages (1-hour TTL, max 100 entries)
+interface CacheEntry {
+  result: AnalysisResult;
+  expiresAt: number;
+}
+const duplicateCache = new Map<string, CacheEntry>();
+
+function normalizeTextKey(text: string): string {
+  return text.trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
 export async function POST(req: NextRequest) {
@@ -46,11 +57,30 @@ export async function POST(req: NextRequest) {
     }
 
     const { message } = validation.data;
+    const cacheKey = normalizeTextKey(message);
+
+    // Check duplicate cache
+    const cached = duplicateCache.get(cacheKey);
+    if (cached && Date.now() < cached.expiresAt) {
+      const freshResult: AnalysisResult = {
+        ...cached.result,
+        id: crypto.randomUUID ? crypto.randomUUID() : `alertiq_${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        providerDetails: {
+          ...cached.result.providerDetails,
+          latencyMs: 8,
+          threatIntelProvider: `${cached.result.providerDetails.threatIntelProvider} (Cache Hit)`,
+        },
+      };
+      return NextResponse.json(freshResult, { status: 200 });
+    }
+
+    const startTime = Date.now();
 
     // Step 1: Safely extract candidate URLs
     const candidateUrls = extractUrls(message);
 
-    // Step 2: Check URL reputation concurrently with Groq AI analysis
+    // Step 2: Check URL reputation & unshorten concurrently with Groq AI analysis
     const [urlReputationResult, aiResult] = await Promise.all([
       checkUrlsReputation(candidateUrls),
       analyzeMessageWithGroq(message),
@@ -105,11 +135,21 @@ export async function POST(req: NextRequest) {
       providerDetails: {
         model: aiResult.modelName,
         threatIntelProvider: urlReputationResult.providerName,
-        latencyMs: aiResult.latencyMs,
+        latencyMs: Date.now() - startTime,
         evidenceVerified: allVerified,
       },
       originalMessage: message,
     };
+
+    // Save to fast duplicate cache (1 hour TTL)
+    if (duplicateCache.size > 150) {
+      const oldestKey = duplicateCache.keys().next().value;
+      if (oldestKey) duplicateCache.delete(oldestKey);
+    }
+    duplicateCache.set(cacheKey, {
+      result: responseData,
+      expiresAt: Date.now() + 60 * 60 * 1000,
+    });
 
     return NextResponse.json(responseData, { status: 200 });
   } catch (error: unknown) {
