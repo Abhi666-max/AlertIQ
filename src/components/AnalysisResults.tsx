@@ -472,38 +472,40 @@ ${result.recommended_actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
     <div className="space-y-4 pb-10">
 
       {/* ── SECTION 1: VERDICT BANNER ── */}
-      <div className={`p-6 rounded-2xl border ${risk.bannerBg} saas-card`}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pb-5 border-b border-slate-200/80">
-          <div className="flex items-center gap-4">
-            <div className={`h-12 w-12 shrink-0 flex items-center justify-center rounded-xl border ${risk.badgeColor}`}>
-              <RiskIcon className={`h-6 w-6 ${risk.scoreColor}`} />
+      <div className={`p-4 sm:p-6 rounded-2xl border ${risk.bannerBg} saas-card`}>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-5 pb-4 sm:pb-5 border-b border-slate-200/80">
+          <div className="flex items-start sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+            <div className={`h-11 w-11 sm:h-12 sm:w-12 shrink-0 flex items-center justify-center rounded-xl border ${risk.badgeColor}`}>
+              <RiskIcon className={`h-5 w-5 sm:h-6 sm:w-6 ${risk.scoreColor}`} />
             </div>
-            <div>
+            <div className="min-w-0 flex-1">
               <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border ${risk.badgeColor}`}>
                 {risk.label}
               </span>
-              <h2 className="font-display text-2xl font-extrabold text-[#090A0F] mt-1">
+              <h2 className="font-display text-xl sm:text-2xl font-extrabold text-[#090A0F] mt-1 break-words">
                 {risk.title}
               </h2>
-              <p className="text-xs text-slate-600 mt-0.5">{risk.oneLiner}</p>
+              <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">{risk.oneLiner}</p>
             </div>
           </div>
 
-          <div className="flex flex-col items-end shrink-0">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold">Threat Score</span>
-            <div className="flex items-baseline gap-1 mt-0.5">
-              <span className={`font-display text-4xl font-black ${risk.scoreColor}`}>{result.riskScore}</span>
-              <span className="text-xs text-slate-400 font-mono">/100</span>
+          <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start w-full sm:w-auto pt-3 sm:pt-0 border-t sm:border-t-0 border-slate-200/60 shrink-0">
+            <div className="flex flex-col items-start sm:items-end">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold">Threat Score</span>
+              <div className="flex items-baseline gap-1 mt-0.5">
+                <span className={`font-display text-3xl sm:text-4xl font-black ${risk.scoreColor}`}>{result.riskScore}</span>
+                <span className="text-xs text-slate-400 font-mono">/100</span>
+              </div>
             </div>
-            <div className="w-24 h-2 bg-slate-200/70 rounded-full mt-2 overflow-hidden">
+            <div className="w-28 sm:w-24 h-2 bg-slate-200/70 rounded-full sm:mt-2 overflow-hidden">
               <div className={`h-full rounded-full ${risk.gaugeColor}`} style={{ width: `${result.riskScore}%` }} />
             </div>
           </div>
         </div>
 
-        <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-slate-500">
-          <span>Report #{result.id.slice(0, 10)} &bull; {new Date(result.timestamp).toLocaleTimeString()}</span>
-          <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
+        <div className="mt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2 text-[11px] font-mono text-slate-500">
+          <span className="truncate">Report #{result.id.slice(0, 10)} &bull; {new Date(result.timestamp).toLocaleTimeString()}</span>
+          <span className="flex items-center gap-1.5 text-emerald-700 font-semibold shrink-0">
             <CheckCircle2 className="h-3.5 w-3.5" />
             Verified &bull; {result.providerDetails.latencyMs}ms
           </span>
@@ -511,19 +513,19 @@ ${result.recommended_actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
       </div>
 
       {/* ── SECTION 2: EXECUTIVE SUMMARY ── */}
-      <div className="saas-card p-5">
+      <div className="saas-card p-4 sm:p-5">
         <div className="flex items-center gap-2 mb-2">
           <FileText className="h-4 w-4 text-[#DC2626] shrink-0" />
           <h3 className="text-xs font-bold uppercase tracking-wider text-[#090A0F]">
             1. Threat Summary (Nishkarsh)
           </h3>
         </div>
-        <p className="text-sm text-slate-700 leading-relaxed font-sans">{result.summary}</p>
+        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans break-words">{result.summary}</p>
       </div>
 
       {/* ── SECTION 3: HIGHLIGHTED MESSAGE (PROOF IN CONTEXT) ── */}
-      <div className="saas-card p-5">
-        <div className="flex items-center justify-between mb-2">
+      <div className="saas-card p-4 sm:p-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
           <div className="flex items-center gap-2">
             <Search className="h-4 w-4 text-[#DC2626] shrink-0" />
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#090A0F]">
@@ -534,13 +536,13 @@ ${result.recommended_actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
             {result.indicators.length} warning phrase{result.indicators.length !== 1 ? 's' : ''} tagged
           </span>
         </div>
-        <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
+        <div className="rounded-xl bg-slate-50 border border-slate-200 p-3 sm:p-4 overflow-hidden">
           {renderHighlightedMessage(result)}
         </div>
       </div>
 
       {/* ── SECTION 4: VERIFIED EVIDENCE / PROOF LIST ── */}
-      <div className="saas-card p-5">
+      <div className="saas-card p-4 sm:p-5">
         <h3 className="text-xs font-bold uppercase tracking-wider text-[#090A0F] mb-3">
           3. Verified Proof & Threat Indicators ({result.indicators.length})
         </h3>
@@ -553,9 +555,9 @@ ${result.recommended_actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
         ) : (
           <div className="space-y-3">
             {result.indicators.map((ind, idx) => (
-              <div key={idx} className="rounded-xl border border-slate-200 bg-white p-4 shadow-xs">
+              <div key={idx} className="rounded-xl border border-slate-200 bg-white p-3.5 sm:p-4 shadow-xs">
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                  <span className="font-bold text-sm text-[#090A0F]">
+                  <span className="font-bold text-xs sm:text-sm text-[#090A0F]">
                     {ind.type.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
                   </span>
                   <span className={`rounded-md px-2 py-0.5 font-mono text-[10px] font-bold uppercase border ${
@@ -568,12 +570,12 @@ ${result.recommended_actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
                 </div>
 
                 {/* Evidence Quote */}
-                <div className="rounded-lg bg-red-50/60 border border-red-100 p-2.5 font-mono text-xs text-red-950 mb-2">
+                <div className="rounded-lg bg-red-50/60 border border-red-100 p-2.5 font-mono text-xs text-red-950 mb-2 break-words break-all">
                   <span className="text-slate-500 font-sans font-medium">Flagged Words (Saboot): </span>
                   <strong className="text-red-700">&ldquo;{ind.evidence}&rdquo;</strong>
                 </div>
 
-                <p className="text-xs text-slate-600 leading-relaxed">{ind.explanation}</p>
+                <p className="text-xs text-slate-600 leading-relaxed break-words">{ind.explanation}</p>
               </div>
             ))}
           </div>
@@ -581,7 +583,7 @@ ${result.recommended_actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
       </div>
 
       {/* ── SECTION 5: URL & DOMAIN INSPECTION ── */}
-      <div className="saas-card p-5">
+      <div className="saas-card p-4 sm:p-5">
         <div className="flex items-center gap-2 mb-3">
           <Link2 className="h-4 w-4 text-[#DC2626] shrink-0" />
           <h3 className="text-xs font-bold uppercase tracking-wider text-[#090A0F]">
@@ -598,7 +600,7 @@ ${result.recommended_actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
             {result.extracted_urls.map((urlItem, idx) => (
               <div key={idx} className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-xs">
                 <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                  <code className="font-bold text-sm text-[#090A0F] font-mono">{urlItem.domain}</code>
+                  <code className="font-bold text-xs sm:text-sm text-[#090A0F] font-mono break-all">{urlItem.domain}</code>
                   <span className={`rounded-md px-2 py-0.5 font-mono text-[10px] font-bold uppercase border ${
                     urlItem.status === 'malicious' ? 'bg-red-50 text-red-700 border-red-200' :
                     urlItem.status === 'suspicious' ? 'bg-amber-50 text-amber-700 border-amber-200' :
@@ -607,14 +609,14 @@ ${result.recommended_actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
                   }`}>
                     {urlItem.status}
                   </span>
-                  <span className="ml-auto flex items-center gap-1 text-[11px] font-medium text-amber-700">
-                    <AlertCircle className="h-3.5 w-3.5" />
+                  <span className="w-full sm:w-auto sm:ml-auto flex items-center gap-1 text-[11px] font-medium text-amber-700">
+                    <AlertCircle className="h-3.5 w-3.5 shrink-0" />
                     Do not open in browser
                   </span>
                 </div>
-                <p className="font-mono text-[11px] text-slate-500 truncate">{urlItem.url}</p>
+                <p className="font-mono text-[11px] text-slate-500 break-all">{urlItem.url}</p>
                 {urlItem.threatDetails && (
-                  <p className="text-xs text-slate-600 mt-1">{urlItem.threatDetails}</p>
+                  <p className="text-xs text-slate-600 mt-1 break-words">{urlItem.threatDetails}</p>
                 )}
               </div>
             ))}
@@ -623,7 +625,7 @@ ${result.recommended_actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
       </div>
 
       {/* ── SECTION 6: WHAT YOU SHOULD DO (SOLUTION / UPAY) ── */}
-      <div className="saas-card p-5">
+      <div className="saas-card p-4 sm:p-5">
         <div className="flex items-center gap-2 mb-3">
           <CheckSquare className="h-4 w-4 text-emerald-600 shrink-0" />
           <h3 className="text-xs font-bold uppercase tracking-wider text-[#090A0F]">
@@ -632,21 +634,22 @@ ${result.recommended_actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
         </div>
         <div className="space-y-2">
           {result.recommended_actions.map((act, idx) => (
-            <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div key={idx} className="flex items-start gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-slate-50 border border-slate-200/80">
               <span className="h-5 w-5 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
                 {idx + 1}
               </span>
-              <span className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans">{act}</span>
+              <span className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans break-words">{act}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* ── SECTION 7: ACTIONS & EXPORT TOOLBAR ── */}
-      <div className="pt-2 flex flex-wrap items-center justify-between gap-3">
+      <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         <button
+          type="button"
           onClick={handleCopy}
-          className="btn-secondary inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold"
+          className="btn-secondary w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 sm:py-2.5 text-xs font-bold active:scale-[0.98] transition-all"
         >
           {copied ? (
             <>
@@ -662,8 +665,9 @@ ${result.recommended_actions.map((a, i) => `${i + 1}. ${a}`).join('\n')}`;
         </button>
 
         <button
+          type="button"
           onClick={() => handleDownloadPDF(result)}
-          className="btn-dark inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-xs font-bold tracking-wide uppercase shadow-sm"
+          className="btn-dark w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 sm:py-2.5 text-xs font-bold tracking-wide uppercase shadow-sm active:scale-[0.98] transition-all"
         >
           <Download className="h-4 w-4 text-[#DC2626]" />
           <span>Export PDF Report</span>

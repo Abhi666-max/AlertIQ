@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Trash2,
   ShieldCheck,
@@ -13,9 +13,7 @@ import {
   Layers,
   Sparkles,
   Camera,
-  Upload,
   QrCode,
-  FileImage,
 } from 'lucide-react';
 import { extractFromImage } from '@/lib/imageProcessor';
 
@@ -48,7 +46,7 @@ const SPECIMENS: Record<string, { label: string; text: string }> = {
 
 const CHANNEL_CONFIG = {
   auto: {
-    placeholder: 'Paste any suspicious message or drag & drop a screenshot here — SMS alert, phishing email, WhatsApp text...',
+    placeholder: 'Paste any suspicious message or screenshot here — SMS alert, phishing email, WhatsApp text...',
     label: 'All Channels',
   },
   sms: {
@@ -142,21 +140,21 @@ export function AnalyzerForm({
   const currentConfig = CHANNEL_CONFIG[channel];
 
   return (
-    <div className="h-full flex flex-col justify-between p-5 bg-white border border-slate-200 rounded-2xl shadow-xs">
+    <div className="h-full flex flex-col justify-between p-4 sm:p-5 bg-white border border-slate-200 rounded-2xl shadow-xs">
       <div>
-        {/* Header */}
-        <div className="flex items-center justify-between gap-3 pb-3.5 border-b border-slate-100">
+        {/* Responsive Header: Stacks cleanly on mobile, side-by-side on tablet/desktop */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3.5 border-b border-slate-100">
           <div>
-            <h2 className="font-display text-lg font-bold text-[#090A0F]">
+            <h2 className="font-display text-base sm:text-lg font-bold text-[#090A0F]">
               Message Scanner
             </h2>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Paste text or upload a screenshot to detect scam tactics
+            <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+              Paste text or upload a screenshot to detect fraud
             </p>
           </div>
 
-          {/* Channel selector */}
-          <div className="flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 p-1 text-xs shrink-0">
+          {/* Touch-Friendly Channel Selector (Full width 4-col on mobile, compact on desktop) */}
+          <div className="grid grid-cols-4 sm:flex items-center gap-1 rounded-xl border border-slate-200 bg-slate-50 p-1 text-xs shrink-0 w-full sm:w-auto">
             {([  
               { key: 'auto',  label: 'Auto',  icon: Layers },
               { key: 'sms',   label: 'SMS',   icon: MessageSquare },
@@ -167,23 +165,23 @@ export function AnalyzerForm({
                 key={key}
                 type="button"
                 onClick={() => setChannel(key)}
-                className={`flex items-center gap-1 rounded-md px-2 py-1 text-xs font-semibold transition-all ${
+                className={`flex items-center justify-center gap-1 rounded-lg py-1.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-semibold transition-all ${
                   channel === key
                     ? 'bg-white text-[#DC2626] shadow-xs font-bold border border-slate-200'
                     : 'text-slate-600 hover:text-[#090A0F]'
                 }`}
               >
-                <Icon className="h-3 w-3" />
+                <Icon className="h-3 w-3 shrink-0" />
                 <span>{label}</span>
               </button>
             ))}
           </div>
         </div>
 
-        {/* Specimen Presets & Screenshot Trigger */}
-        <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2">
+        {/* Specimen Presets & Screenshot Trigger (Wraps cleanly on all screen sizes) */}
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-[11px] font-medium text-slate-500 flex items-center gap-1">
+            <span className="text-[10px] sm:text-[11px] font-medium text-slate-500 flex items-center gap-1 shrink-0">
               <Sparkles className="h-3 w-3 text-[#DC2626]" />
               Samples:
             </span>
@@ -195,7 +193,7 @@ export function AnalyzerForm({
                   setChannel(key === 'hinglish' ? 'auto' : (key as 'sms' | 'email' | 'chat'));
                   setMessage(spec.text);
                 }}
-                className="text-[11px] font-medium px-2 py-0.5 rounded-md border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:text-[#090A0F] transition-colors"
+                className="text-[10px] sm:text-[11px] font-medium px-2 py-0.5 rounded-md border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:text-[#090A0F] transition-colors"
               >
                 {spec.label}
               </button>
@@ -207,9 +205,9 @@ export function AnalyzerForm({
             type="button"
             onClick={() => fileInputRef.current?.click()}
             disabled={isProcessingImage || isLoading}
-            className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-600 hover:text-[#DC2626] border border-dashed border-slate-300 hover:border-[#DC2626] rounded-md px-2 py-0.5 bg-slate-50 transition-colors"
+            className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold text-slate-700 hover:text-[#DC2626] border border-dashed border-slate-300 hover:border-[#DC2626] rounded-md px-2 py-1 bg-slate-50 transition-colors w-full sm:w-auto justify-center"
           >
-            <Camera className="h-3 w-3" />
+            <Camera className="h-3.5 w-3.5 shrink-0" />
             <span>Upload Screenshot / QR</span>
           </button>
           <input
@@ -229,23 +227,23 @@ export function AnalyzerForm({
             ) : (
               <QrCode className="h-3.5 w-3.5 text-[#DC2626] shrink-0" />
             )}
-            <span>{imageOcrStatus}</span>
+            <span className="truncate">{imageOcrStatus}</span>
           </div>
         )}
 
         {/* Text Area with Clipboard Image Paste Handler */}
-        <div className="mt-3 relative">
+        <div className="mt-2.5 relative">
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onPaste={handlePaste}
             placeholder={currentConfig.placeholder}
-            rows={8}
+            rows={7}
             disabled={isLoading || isProcessingImage}
-            className="w-full rounded-xl border border-slate-200 bg-[#FAFAFA] p-3 text-sm text-[#090A0F] placeholder-slate-400 focus:outline-none focus:border-[#DC2626] focus:ring-2 focus:ring-red-100 font-mono transition-all resize-none disabled:opacity-60 leading-relaxed"
+            className="w-full rounded-xl border border-slate-200 bg-[#FAFAFA] p-3 text-xs sm:text-sm text-[#090A0F] placeholder-slate-400 focus:outline-none focus:border-[#DC2626] focus:ring-2 focus:ring-red-100 font-mono transition-all resize-none disabled:opacity-60 leading-relaxed"
           />
 
-          <div className="flex items-center justify-between mt-1.5 text-xs text-slate-500">
+          <div className="flex items-center justify-between mt-1.5 text-[11px] sm:text-xs text-slate-500">
             <div className="flex items-center gap-2">
               <span className={charCount > maxChars ? 'text-red-600 font-bold' : ''}>
                 {charCount}/{maxChars}
@@ -258,7 +256,7 @@ export function AnalyzerForm({
               <button
                 type="button"
                 onClick={handleClear}
-                className="flex items-center gap-1 text-slate-400 hover:text-red-600 transition-colors font-medium"
+                className="flex items-center gap-1 text-slate-400 hover:text-red-600 transition-colors font-medium p-1"
               >
                 <Trash2 className="h-3.5 w-3.5" />
                 <span>Clear</span>
@@ -269,28 +267,28 @@ export function AnalyzerForm({
 
         {/* Error Notification */}
         {errorMessage && (
-          <div className="mt-2.5 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 p-2.5 text-xs text-red-700">
+          <div className="mt-2 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 p-2.5 text-xs text-red-700">
             <AlertCircle className="h-4 w-4 shrink-0 text-red-600" />
-            <span>{errorMessage}</span>
+            <span className="break-words">{errorMessage}</span>
           </div>
         )}
       </div>
 
-      {/* Footer / Submit */}
-      <div className="mt-4 pt-3.5 border-t border-slate-100 flex flex-col gap-2.5">
-        <div className="flex items-center justify-between text-[11px] text-slate-500">
-          <div className="flex items-center gap-1.5">
-            <Lock className="h-3.5 w-3.5 text-slate-400" />
-            <span>Private ephemeral memory &bull; Zero storage</span>
+      {/* Footer / Submit (Touch-friendly height and spacing) */}
+      <div className="mt-3.5 pt-3 border-t border-slate-100 flex flex-col gap-2">
+        <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-slate-500">
+          <div className="flex items-center gap-1.5 truncate">
+            <Lock className="h-3 w-3 text-slate-400 shrink-0" />
+            <span className="truncate">Volatile memory &bull; Zero storage</span>
           </div>
-          <span className="text-[10px] text-slate-400">Tip: Paste screenshot with Ctrl+V</span>
+          <span className="text-[10px] text-slate-400 hidden sm:inline">Ctrl+V paste image</span>
         </div>
 
         <button
           type="button"
           onClick={() => handleSubmit()}
           disabled={isLoading || isProcessingImage || charCount < 5 || charCount > maxChars}
-          className="btn-primary w-full inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold tracking-wide uppercase disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+          className="btn-primary w-full inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-xs sm:text-sm font-bold tracking-wide uppercase disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-[0.99] shadow-sm"
         >
           {isLoading ? (
             <>
