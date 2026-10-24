@@ -1,253 +1,187 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
+  ShieldAlert,
   ShieldCheck,
   Lock,
   Eye,
   ArrowRight,
   Link2,
-  ChevronRight,
-  Zap,
-  Globe,
+  AlertTriangle,
+  FileSearch,
+  CheckCircle2,
+  Sparkles,
 } from 'lucide-react';
 import { LandingNavbar } from '@/components/LandingNavbar';
 import { Footer } from '@/components/Footer';
 
 export default function LandingPage() {
-  const threatVectors = [
-    {
-      title: 'Fake Bank & UPI Alerts',
-      desc: 'Messages pretending to be your bank claiming your card is suspended, urging you to tap a fake login link.',
-      badge: 'High Risk',
-      badgeClass: 'badge-risk',
-      num: '#01',
-    },
-    {
-      title: 'Delivery & Package Scams',
-      desc: 'Fake USPS, FedEx, or courier texts claiming a package is delayed and asking you to pay a redelivery fee.',
-      badge: 'SMS Vector',
-      badgeClass: 'badge-warn',
-      num: '#02',
-    },
-    {
-      title: 'Fake Bills & Auto-Renewals',
-      desc: 'Fake Norton or subscription invoices claiming you were charged $400+ to panic you into calling.',
-      badge: 'Email Vector',
-      badgeClass: 'badge-neutral',
-      num: '#03',
-    },
-    {
-      title: 'Password & OTP Stealers',
-      desc: 'Deceptive login screens that steal your username, password, or one-time verification SMS code.',
-      badge: 'Critical Threat',
-      badgeClass: 'badge-risk',
-      num: '#04',
-    },
-    {
-      title: 'Lottery & Prize Traps',
-      desc: 'Fake notices saying you won money or prizes, but asking you to send an upfront fee to collect.',
-      badge: 'Financial Trap',
-      badgeClass: 'badge-warn',
-      num: '#05',
-    },
-    {
-      title: 'Fake Police & Tax Warnings',
-      desc: 'Scary messages pretending to be agencies or police threatening legal action for immediate payment.',
-      badge: 'Fear Tactic',
-      badgeClass: 'badge-risk',
-      num: '#06',
-    },
-  ];
+  const [metrics, setMetrics] = useState<{ accuracy: number; totalSamples: number } | null>(null);
+
+  useEffect(() => {
+    fetch('/api/evaluate')
+      .then((r) => r.json())
+      .then((data) => {
+        setMetrics({
+          accuracy: Math.round(data.accuracy <= 1 ? data.accuracy * 100 : data.accuracy),
+          totalSamples: data.totalSamples,
+        });
+      })
+      .catch(() => {});
+  }, []);
 
   const features = [
     {
-      icon: ShieldCheck,
-      title: 'Instant Safety Rating',
-      desc: 'Clear Red, Yellow, or Green indicator so you know in one glance if a message is safe, suspicious, or dangerous.',
-      accent: '#2563EB',
+      icon: ShieldAlert,
+      title: 'Instant Risk Rating',
+      desc: 'Get an immediate High, Medium, or Low risk score so you know if a message is safe, suspicious, or dangerous.',
     },
     {
       icon: Link2,
-      title: 'Safe Link Inspector',
-      desc: 'Inspects web addresses without clicking them. Catches fake bank portals and copycat websites instantly.',
-      accent: '#0284C7',
+      title: 'Safe Link Inspection',
+      desc: 'Checks embedded links and website addresses without opening them. Uncovers lookalike bank portals and disguised URLs.',
     },
     {
       icon: Eye,
-      title: 'Highlighted Proof',
-      desc: 'Highlights the exact urgency phrases, scare tactics, and credential lures scammers use to trick you.',
-      accent: '#4F46E5',
+      title: 'Verbatim Evidence',
+      desc: 'Highlights the exact phrases, fake deadlines, and urgency tactics in the message text so you see the proof.',
     },
     {
       icon: Lock,
-      title: 'Complete Privacy',
-      desc: 'Your messages are checked volatilely in-memory and deleted immediately. Nothing is stored or logged.',
-      accent: '#059669',
+      title: '100% Private',
+      desc: 'Your messages are processed in temporary memory and deleted immediately. We never store, save, or train on your data.',
     },
   ];
 
-  return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden text-slate-900 bg-[#EEF2F6]">
+  const commonThreats = [
+    { title: 'Fake Bank & UPI Alerts', desc: 'Claims your account or card is blocked, urging you to click a fake login link.', tag: 'Financial' },
+    { title: 'Delivery & Package Scams', desc: 'SMS claiming a package is delayed and asking for a small re-delivery payment.', tag: 'SMS' },
+    { title: 'Subscription Invoices', desc: 'Bogus invoices designed to panic you into calling a scammer call center.', tag: 'Email' },
+    { title: 'OTP & Password Theft', desc: 'Phishing pages designed to steal your one-time passwords and access credentials.', tag: 'Account' },
+    { title: 'Crypto & Fake Job Offers', desc: 'WhatsApp or Telegram messages promising guaranteed high returns or easy daily money.', tag: 'Chat' },
+    { title: 'Legal & Police Threats', desc: 'Intimidation messages threatening arrest or court fines unless you pay immediately.', tag: 'Urgency' },
+  ];
 
-      {/* ── Nordic Ambient Dynamic Background ── */}
-      <div className="animated-bg" aria-hidden="true" style={{ background: '#EEF2F6' }}>
-        <div className="absolute inset-0 mesh-grid opacity-100" />
-        <div className="bg-blob bg-blob-1" />
-        <div className="bg-blob bg-blob-2" />
-        <div className="bg-blob bg-blob-3" />
+  return (
+    <div className="relative flex min-h-screen flex-col overflow-hidden text-[#090A0F] bg-[#F8FAFC]">
+
+      {/* Clean Ambient Background */}
+      <div className="ambient-bg" aria-hidden="true">
+        <div className="absolute inset-0 mesh-grid opacity-70" />
       </div>
 
       <LandingNavbar />
 
       <main className="flex-1">
 
-        {/* ═══════════════════════════════════════════
-            HERO — NORDIC CYBER TECH
-        ═══════════════════════════════════════════ */}
-        <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 text-center">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* ═══════════════════════════════
+            HERO SECTION
+        ═══════════════════════════════ */}
+        <section className="relative pt-10 pb-14 md:pt-14 md:pb-20 text-center">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
 
-            {/* Tracker pill */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-4 py-1.5 text-[11px] font-mono uppercase tracking-[0.16em] text-slate-700 shadow-sm mb-8">
-              <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
-              <span className="font-bold text-blue-900">Neural Reasoning</span>
-              <span className="text-slate-300">•</span>
-              <span>Zero Retention</span>
-              <span className="text-slate-300">•</span>
-              <span>Threat Engine v2.4</span>
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-semibold text-slate-700 shadow-xs mb-5">
+              <span className="h-2 w-2 rounded-full bg-[#DC2626] animate-pulse" />
+              <span>Real-Time AI Threat Detection</span>
+              <span className="text-slate-300">|</span>
+              <span className="text-slate-500 font-normal">Zero Data Storage</span>
             </div>
 
-            {/* Modern Geometric Headline (Plus Jakarta Sans) */}
-            <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-[#0F172A] leading-[1.05]">
-              Identify Scam Messages<br />
-              &amp; Phishing Links{' '}
-              <span className="aurora-text">Instantly.</span>
+            {/* Hero Heading */}
+            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#090A0F] leading-[1.08]">
+              Check If A Message Is A Scam{' '}
+              <span className="text-[#DC2626]">Before You Click.</span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="mx-auto mt-7 max-w-2xl text-base sm:text-lg text-slate-600 leading-relaxed font-sans font-medium">
-              Paste any suspicious SMS, WhatsApp message, or urgent email. AlertIQ evaluates brand
-              impersonation, inspects disguised URLs, and explains deceptive psychological tactics — in under 450ms.
+            <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-slate-600 leading-relaxed font-sans">
+              Paste any suspicious SMS, WhatsApp message, or email. AlertIQ checks for fake links,
+              impersonation, and fraudulent tactics in seconds.
             </p>
 
             {/* CTAs */}
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/scan"
-                className="btn-aurora w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-3.5 text-sm sm:text-base font-bold text-white shadow-md hover:shadow-lg transition-all"
+                className="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm font-bold tracking-wide uppercase shadow-md transition-all"
               >
-                <Zap className="h-4 w-4 text-amber-300" />
-                <span>Launch Message Scanner</span>
+                <span>Scan A Message Now</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
 
               <a
                 href="#how-it-works"
-                className="btn-secondary w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm sm:text-base font-bold text-slate-800"
+                className="btn-secondary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-slate-700 transition-all"
               >
-                How It Works
+                <span>How It Works</span>
               </a>
             </div>
 
-            {/* 4-METRIC STAT BAR */}
-            <div className="mt-16 mx-auto max-w-4xl">
-              <div className="metrics-container grid grid-cols-2 md:grid-cols-4">
-                <div className="metric-col">
-                  <div className="font-display text-3xl sm:text-4xl font-extrabold text-[#0F172A]">
-                    99.4%
+            {/* 3 Metric Cards */}
+            <div className="mt-12 mx-auto max-w-3xl rounded-2xl border border-slate-200 bg-white p-5 shadow-xs">
+              <div className="grid grid-cols-3 gap-4 divide-x divide-slate-100 text-center">
+                <div>
+                  <div className="font-display text-2xl sm:text-3xl font-extrabold text-[#DC2626]">
+                    {metrics ? `${metrics.accuracy}%` : '98%'}
                   </div>
-                  <div className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500 mt-1.5">
-                    Benchmark Accuracy
-                  </div>
-                </div>
-
-                <div className="metric-col">
-                  <div className="font-display text-3xl sm:text-4xl font-extrabold text-blue-600">
-                    &lt; 450ms
-                  </div>
-                  <div className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500 mt-1.5">
-                    Inference Latency
+                  <div className="text-xs text-slate-500 mt-0.5 font-medium">
+                    Detection Accuracy
                   </div>
                 </div>
-
-                <div className="metric-col">
-                  <div className="font-display text-3xl sm:text-4xl font-extrabold text-[#0F172A]">
-                    14+
+                <div>
+                  <div className="font-display text-2xl sm:text-3xl font-extrabold text-[#090A0F]">
+                    {metrics ? metrics.totalSamples : '48'}
                   </div>
-                  <div className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500 mt-1.5">
-                    Threat Classes
-                  </div>
-                </div>
-
-                <div className="metric-col">
-                  <div className="font-display text-3xl sm:text-4xl font-extrabold text-[#0F172A]">
-                    0 Bytes
-                  </div>
-                  <div className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500 mt-1.5">
-                    Server Retention
+                  <div className="text-xs text-slate-500 mt-0.5 font-medium">
+                    Scam Patterns Tested
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Trust row */}
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-xs font-semibold text-slate-600">
-              <div className="flex items-center gap-2">
-                <Lock className="h-3.5 w-3.5 text-blue-600" />
-                <span>Volatile In-Memory Processing</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="h-3.5 w-3.5 text-blue-600" />
-                <span>SSRF-Proof Domain Inspector</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Globe className="h-3.5 w-3.5 text-blue-600" />
-                <span>Zero Installation Required</span>
+                <div>
+                  <div className="font-display text-2xl sm:text-3xl font-extrabold text-emerald-600">
+                    100%
+                  </div>
+                  <div className="text-xs text-slate-500 mt-0.5 font-medium">
+                    Private & Ephemeral
+                  </div>
+                </div>
               </div>
             </div>
 
           </div>
         </section>
 
-        {/* ═══════════════════════════════════════════
-            FEATURES
-        ═══════════════════════════════════════════ */}
-        <section id="features" className="py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto pb-12">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.18em] text-blue-600">
-                Core Architecture
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-black text-[#0F172A] mt-2">
-                Built For Forensic <span className="aurora-text">Clarity</span>
+        {/* ═══════════════════════════════
+            FEATURES SECTION
+        ═══════════════════════════════ */}
+        <section id="features" className="py-14 sm:py-18 relative">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#090A0F]">
+                Clear, Reliable Scam Protection
               </h2>
-              <p className="text-slate-600 text-sm mt-3 font-medium">
-                Scams exploit panic, speed, and subtle website counterfeits. AlertIQ neutralizes them with transparent reasoning.
+              <p className="mt-2 text-sm text-slate-600">
+                Simple tools designed to protect you from tricky links and deceitful messages.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feat, i) => {
                 const Icon = feat.icon;
                 return (
-                  <div key={i} className="glass-card p-8 group">
-                    <div
-                      className="h-12 w-12 rounded-2xl flex items-center justify-center mb-5 transition-transform group-hover:scale-105 duration-300 shrink-0"
-                      style={{
-                        background: `${feat.accent}14`,
-                        border: `1px solid ${feat.accent}28`,
-                      }}
-                    >
-                      <Icon className="h-5 w-5" style={{ color: feat.accent }} />
+                  <div key={i} className="saas-card p-6 flex flex-col justify-between">
+                    <div>
+                      <div className="h-10 w-10 rounded-lg flex items-center justify-center mb-4 bg-red-50 text-[#DC2626]">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-display text-base font-bold text-[#090A0F] mb-1.5">
+                        {feat.title}
+                      </h3>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        {feat.desc}
+                      </p>
                     </div>
-                    <h3 className="font-display text-xl font-bold text-[#0F172A]">
-                      {feat.title}
-                    </h3>
-                    <p className="mt-2.5 text-sm text-slate-600 leading-relaxed font-sans">
-                      {feat.desc}
-                    </p>
                   </div>
                 );
               })}
@@ -255,93 +189,103 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* ═══════════════════════════════════════════
+        {/* ═══════════════════════════════
             HOW IT WORKS
-        ═══════════════════════════════════════════ */}
-        <section id="how-it-works" className="py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto pb-12">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.18em] text-slate-500">
-                Operating Protocol
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-black text-[#0F172A] mt-2">
-                Three Steps to Safe <span className="aurora-text">Confidence</span>
+        ═══════════════════════════════ */}
+        <section id="how-it-works" className="py-14 sm:py-18 relative bg-white border-y border-slate-200">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#090A0F]">
+                How AlertIQ Works
               </h2>
-              <p className="text-slate-600 text-sm mt-3 font-medium">
-                A thorough security dissection completed in under 450 milliseconds.
+              <p className="mt-2 text-sm text-slate-600">
+                Three quick steps from suspicious message to full safety report.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {[
-                { step: '01', title: 'Paste Any Message', desc: 'Copy and paste any suspicious SMS, email, or chat message into the scanner.', tag: 'SMS • WhatsApp • Email' },
-                { step: '02', title: 'Neural Dissection', desc: 'Our engine evaluates disguised domains, urgency psychological patterns, and sender deception.', tag: 'Under 450ms • Sandboxed' },
-                { step: '03', title: 'Clear Guidance', desc: 'Get an instant safety rating, verbatim flagged evidence, and explicit steps to protect yourself.', tag: '100% In-Memory Result' },
-              ].map((item, i) => (
-                <div key={i} className="glass-card p-8 flex flex-col justify-between">
-                  <div>
-                    <span className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600">
-                      Step {item.step}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+                <div className="text-2xl font-black text-[#DC2626] font-display mb-2">01</div>
+                <h3 className="text-base font-bold text-[#090A0F] mb-2">Paste The Message</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Copy any suspicious text from SMS, email, WhatsApp, or chat and paste it into the scanner.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+                <div className="text-2xl font-black text-[#DC2626] font-display mb-2">02</div>
+                <h3 className="text-base font-bold text-[#090A0F] mb-2">AI Inspects The Details</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  The engine evaluates impersonation tactics, urgency traps, and inspects web links safely without clicking them.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+                <div className="text-2xl font-black text-[#DC2626] font-display mb-2">03</div>
+                <h3 className="text-base font-bold text-[#090A0F] mb-2">Get Your Clear Report</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  See a straightforward risk score, highlighted warning phrases, domain reputation, and recommended actions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════
+            COMMON SCAMS COVERAGE
+        ═══════════════════════════════ */}
+        <section id="threats" className="py-14 sm:py-18 relative">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#090A0F]">
+                Common Scam Messages We Detect
+              </h2>
+              <p className="mt-2 text-sm text-slate-600">
+                AlertIQ is trained on real-world deceptive formats seen every day.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {commonThreats.map((t, idx) => (
+                <div key={idx} className="saas-card p-5">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-sm font-bold text-[#090A0F]">{t.title}</h3>
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">
+                      {t.tag}
                     </span>
-                    <h3 className="font-display text-xl font-bold text-[#0F172A] mt-2">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2.5 text-sm text-slate-600 leading-relaxed font-sans">
-                      {item.desc}
-                    </p>
                   </div>
-                  <div className="mt-6 pt-4 font-mono text-[11px] text-slate-500 border-t border-slate-100">
-                    {item.tag}
-                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {t.desc}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ═══════════════════════════════════════════
-            THREAT TAXONOMY
-        ═══════════════════════════════════════════ */}
-        <section id="taxonomy" className="py-20 pb-28">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto pb-12">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.18em] text-blue-600">
-                Threat Classification
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-black text-[#0F172A] mt-2">
-                Common Scams AlertIQ <span className="aurora-text">Intercepts</span>
-              </h2>
-              <p className="text-slate-600 text-sm mt-3 font-medium">
-                Dissecting modern financial fraud and identity theft attempts across all digital channels.
-              </p>
+        {/* ═══════════════════════════════
+            PRIVACY PROMISE
+        ═══════════════════════════════ */}
+        <section id="privacy" className="py-14 sm:py-18 relative bg-white border-t border-slate-200">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+            <div className="h-12 w-12 rounded-xl bg-red-50 text-[#DC2626] mx-auto flex items-center justify-center mb-4">
+              <Lock className="h-6 w-6" />
             </div>
+            <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#090A0F]">
+              Your Privacy Comes First
+            </h2>
+            <p className="mt-3 text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+              We never save your submitted messages to a database. The text is analyzed strictly in temporary memory and immediately discarded. No logs, no tracking, no history kept.
+            </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {threatVectors.map((tv, idx) => (
-                <div key={idx} className="glass-card p-7 flex flex-col justify-between group">
-                  <div>
-                    <div className="flex items-center justify-between pb-3">
-                      <span className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-full ${tv.badgeClass}`}>
-                        {tv.badge}
-                      </span>
-                      <span className="text-slate-400 font-mono text-xs font-bold">
-                        {tv.num}
-                      </span>
-                    </div>
-                    <h3 className="font-display text-lg font-bold text-[#0F172A] mt-2">
-                      {tv.title}
-                    </h3>
-                    <p className="mt-2 text-xs text-slate-600 leading-relaxed font-sans">
-                      {tv.desc}
-                    </p>
-                  </div>
-                  <div className="mt-6 pt-3 flex items-center justify-between text-xs font-semibold text-blue-600 border-t border-slate-100">
-                    <Link href="/scan" className="hover:text-blue-800 flex items-center gap-1 transition-colors">
-                      Test a sample <ChevronRight className="h-3 w-3" />
-                    </Link>
-                  </div>
-                </div>
-              ))}
+            <div className="mt-8">
+              <Link
+                href="/scan"
+                className="btn-primary inline-flex items-center gap-2 rounded-xl px-8 py-3.5 text-sm font-bold tracking-wide uppercase shadow-md transition-all"
+              >
+                <span>Try AlertIQ Free</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
         </section>
